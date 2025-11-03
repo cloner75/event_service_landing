@@ -51,9 +51,8 @@ export default function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className={`${
-                isHome ? "md:hidden" : ""
-              } text-2xl font-bold text-indigo-600`}
+              className={`
+               text-2xl font-bold text-indigo-600`}
             >
               <div
                 className={
@@ -95,7 +94,7 @@ export default function Header() {
             })}
           </nav>
 
-          <div className={`${isHome ? "md:hidden" : "flex min-w-[200px]"}`}>
+          <div className={`"flex min-w-[200px]`}>
             <DownloadApp />
           </div>
         </div>
