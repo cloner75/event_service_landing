@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function Privacy() {
   return (
-    <div>
+    <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
       <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
       <p className="text-sm mb-6">Effective Date: November 2025</p>
       <p className="leading-relaxed">

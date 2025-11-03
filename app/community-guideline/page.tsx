@@ -1,10 +1,8 @@
 function Page() {
   return (
-    <div>
-      <header className="mb-10">
+    <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
         <h1 className="text-3xl font-bold mb-2">Community Guidelines</h1>
         Effective Date: November 2025
-      </header>
 
       <section className="mb-8">
         <p>
@@ -194,12 +192,15 @@ function Page() {
             our website.
           </p>
         </section>
-
-        <section>
+          <section>
           12. Contact
+          <p>If you have questions or need to report an issue, contact our support team at:</p>
+          </section>
+        <section>
+
           <address className="not-italic">
             <p>
-              <strong>Dopin LLC</strong>
+              Dopin LLC
             </p>
             <p>San Francisco, California, USA</p>
             <p>

@@ -75,7 +75,7 @@ function Page() {
                 Message
               </label>
               <textarea
-                rows="5"
+                rows={5}
                 placeholder="Type your message — we’ll get back soon!"
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               ></textarea>

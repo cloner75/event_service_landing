@@ -11,7 +11,7 @@ const menuItems = [
   { label: "Download", href: "/download" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
-  { label: "Community Guidelines", href: "/guidline" },
+  { label: "Community Guidelines", href: "/community-guideline" },
   { label: "About Dopin", href: "/about" },
   { label: "Contact Us", href: "/contact" },
 ];

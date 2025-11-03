@@ -3,7 +3,7 @@ import Link from "next/link";
 const menuItems = [
   { label: "Privacy", href: "/features" },
   { label: "Terms", href: "/pricing" },
-  { label: "Community Guidelines", href: "/community-guidline" },
+  { label: "Community Guidelines", href: "/community-guideline" },
   { label: "About Dopin", href: "/about" },
   { label: "Contact Us", href: "/contact" },
   { label: "Report", href: "/report" },

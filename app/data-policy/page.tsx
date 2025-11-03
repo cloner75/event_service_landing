@@ -1,8 +1,8 @@
 function Page() {
   return (
-    <div className="max-w-3xl mx-auto p-6 text-gray-800 leading-relaxed space-y-6">
-      <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
-      <p className="font-semibold text-gray-900">
+    <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
+      <h1 className="text-3xl font-bold mb-2">Data Policy</h1>
+      <p className="font-semibold  ">
         Effective Date: November 2025
       </p>
 
@@ -13,7 +13,7 @@ function Page() {
         complements our Privacy Policy and Terms of Use.
       </p>
 
-      <p className="font-semibold text-gray-900">1. Purpose</p>
+      <p className="font-semibold  ">1. Purpose</p>
       <p>
         Dopin processes data only to provide a safe, personalized, and reliable
         platform for event discovery, Dopins (user-generated meetups), and
@@ -21,16 +21,16 @@ function Page() {
         user control in every aspect of data handling.
       </p>
 
-      <p className="font-semibold text-gray-900">2. Types of Data Processed</p>
+      <p className="font-semibold  ">2. Types of Data Processed</p>
       <p>Dopin processes the following categories of data:</p>
 
-      <p className="font-medium text-gray-900">a. Account Data</p>
+      <p className="font-medium  ">a. Account Data</p>
       <p>
         We collect your phone number, username, and password to verify your
         account and secure access to the Service.
       </p>
 
-      <p className="font-medium text-gray-900">b. Optional Profile Data</p>
+      <p className="font-medium  ">b. Optional Profile Data</p>
       <p>
         To help personalize your Dopin experience, you may optionally provide:
       </p>
@@ -51,19 +51,19 @@ function Page() {
         data.
       </p>
 
-      <p className="font-medium text-gray-900">c. User Activity Data</p>
+      <p className="font-medium  ">c. User Activity Data</p>
       <p>
         This includes Dopins you create, join, or interact with; chat messages;
         and factual event submissions (titles, dates, and locations).
       </p>
 
-      <p className="font-medium text-gray-900">d. Technical and System Data</p>
+      <p className="font-medium  ">d. Technical and System Data</p>
       <p>
         We collect device information, IP address, app version, and general
         location (if enabled) to secure and optimize the Service.
       </p>
 
-      <p className="font-semibold text-gray-900">3. Data Ownership</p>
+      <p className="font-semibold  ">3. Data Ownership</p>
       <p>
         You remain the owner of your personal and optional profile data. Dopin
         processes this data only to provide app functionality and personalize
@@ -76,10 +76,10 @@ function Page() {
         or messages.
       </p>
 
-      <p className="font-semibold text-gray-900">
+      <p className="font-semibold  ">
         4. Data Storage and Retention
       </p>
-      <p className="font-medium text-gray-900">a. Storage Duration</p>
+      <p className="font-medium  ">a. Storage Duration</p>
       <ul className="list-disc pl-6 space-y-1">
         <li>
           Permanent storage: factual Dopin data and chat history are retained to
@@ -93,14 +93,14 @@ function Page() {
         </li>
       </ul>
 
-      <p className="font-medium text-gray-900">b. Data Location</p>
+      <p className="font-medium  ">b. Data Location</p>
       <p>
         Dopin stores and processes data securely on servers located in the
         United States and may use trusted third-party cloud infrastructure
         providers under strict data protection contracts.
       </p>
 
-      <p className="font-semibold text-gray-900">5. Data Security</p>
+      <p className="font-semibold  ">5. Data Security</p>
       <p>
         Dopin applies strong security measures to protect user data from
         unauthorized access, disclosure, alteration, or loss. Our safeguards
@@ -117,7 +117,7 @@ function Page() {
         and international privacy laws.
       </p>
 
-      <p className="font-semibold text-gray-900">6. Data Access and Control</p>
+      <p className="font-semibold  ">6. Data Access and Control</p>
       <p>
         Users can access and manage their data within the app settings. You may
         request:
@@ -138,7 +138,7 @@ function Page() {
         within a reasonable timeframe.
       </p>
 
-      <p className="font-semibold text-gray-900">7. Data Sharing</p>
+      <p className="font-semibold  ">7. Data Sharing</p>
       <p>
         Dopin does not sell or trade user data. We only share data under the
         following conditions:
@@ -157,7 +157,7 @@ function Page() {
       </ul>
       <p>We never share personal data for marketing or advertising purposes.</p>
 
-      <p className="font-semibold text-gray-900">8. User Responsibility</p>
+      <p className="font-semibold  ">8. User Responsibility</p>
       <p>
         Users are responsible for maintaining account security by keeping
         passwords confidential and avoiding sharing private data in public
@@ -165,7 +165,7 @@ function Page() {
         access shared information.
       </p>
 
-      <p className="font-semibold text-gray-900">9. Data Policy Updates</p>
+      <p className="font-semibold  ">9. Data Policy Updates</p>
       <p>
         We may update this Data Policy periodically to reflect legal,
         operational, or technological changes. If updates are significant, we
@@ -176,7 +176,7 @@ function Page() {
         Policy.
       </p>
 
-      <p className="font-semibold text-gray-900">10. Contact</p>
+      <p className="font-semibold  ">10. Contact</p>
       <p>For data-related questions, access requests, or concerns, contact:</p>
       <p>
         Dopin LLC

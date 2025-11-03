@@ -1,6 +1,6 @@
 function Page() {
   return (
-    <div>
+    <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
       <h1 className="text-3xl font-bold mb-2">Terms of Use</h1>
       <p className="my-4">
         <strong>Effective Date:</strong>November 2025
