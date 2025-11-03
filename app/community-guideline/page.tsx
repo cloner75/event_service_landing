@@ -205,7 +205,7 @@ function Page() {
             <p>Dopin LLC</p>
             <p>San Francisco, California, USA</p>
             <p>
-              Email:
+              Email: {" "}
               <a
                 href="mailto:support@dopin.io"
                 className="text-indigo-600 underline"
@@ -214,7 +214,7 @@ function Page() {
               </a>
             </p>
             <p>
-              Website:
+              Website: {" "}
               <a
                 href="https://www.dopin.io"
                 className="text-indigo-600 underline"

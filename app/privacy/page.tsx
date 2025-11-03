@@ -314,7 +314,7 @@ function Privacy() {
               </a>
             </p>
             <p>
-              Website:
+              Website:{" "}
               <a
                 href="https://www.dopin.io"
                 target="_blank"

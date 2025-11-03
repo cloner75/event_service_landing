@@ -1,6 +1,6 @@
 function Page() {
   return (
-    <div>
+    <div className="min-h-[65vh]">
       <h1 className="text-3xl font-bold mb-2">Download</h1>
     </div>
   );
