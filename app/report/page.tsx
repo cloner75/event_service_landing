@@ -18,7 +18,7 @@ function Page() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Info@Dopin Experience Live in SF"
+                  placeholder="Enter first name ..."
                   className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
@@ -28,7 +28,7 @@ function Page() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Fest@Dopin Experience Live in SF"
+                  placeholder="Enter last name ..."
                   className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
@@ -36,19 +36,29 @@ function Page() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Company Name
+                Email Address
               </label>
               <input
                 type="text"
-                placeholder="Google"
+                placeholder="Enter Email Address"
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Title
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your Title"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Category
+                  Category (Sign in / Sign up issue)
                 </label>
                 <select className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                   <option>Wrong Information</option>
@@ -57,18 +67,6 @@ function Page() {
                   <option>Press & Media</option>
                 </select>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Department
-                </label>
-                <select className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                  <option>Financial</option>
-                  <option>Technical</option>
-                  <option>Partnership</option>
-                  <option>General</option>
-                </select>
-              </div>
-            </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -76,7 +74,7 @@ function Page() {
               </label>
               <textarea
                 rows={5}
-                placeholder="Type your message — we’ll get back soon!"
+                placeholder="Write a short note about the issue you found."
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               ></textarea>
             </div>

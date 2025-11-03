@@ -4,7 +4,9 @@ function Privacy() {
   return (
     <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
       <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
-      <p className="text-sm mb-6">Effective Date: November 2025</p>
+            <p className="my-4">
+        <strong>Effective Date: </strong>November 2025
+      </p>
       <p className="leading-relaxed">
         Welcome to <strong>Dopin</strong> (“we,” “us,” or “our”). Your privacy
         matters to us. This Privacy Policy explains how we collect, use,
@@ -21,7 +23,7 @@ function Privacy() {
       </p>
 
       <article className="space-y-10">
-        <section className="pt-8">
+        <section className="pt-4">
           1. Information We Collect
           <p className="  mb-6">
             We collect only the information necessary to provide and secure our
@@ -115,7 +117,7 @@ function Privacy() {
           </div>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           2. How We Use Your Information
           <ul className="list-disc list-inside space-y-1   mb-4">
             <li>Verify and secure your account.</li>
@@ -133,7 +135,7 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           3. Data Retention
           <ul className="list-disc list-inside space-y-2   mb-4">
             <li>
@@ -153,7 +155,7 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           4. Data Sharing and Disclosure
           <p className="  mb-6">
             We only share your data under specific and lawful conditions:
@@ -198,7 +200,7 @@ function Privacy() {
           </div>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           5. Security and Data Protection
           <ul className="list-disc list-inside space-y-1   mb-4">
             <li>Encrypted network communications (HTTPS/TLS).</li>
@@ -217,7 +219,7 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           6. Your Privacy Rights
           <ul className="list-disc list-inside space-y-1   mb-4">
             <li>Access or export your data.</li>
@@ -240,7 +242,7 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           7. Age Restriction
           <p>Dopin is designed for users 18 years and older.</p>
           <p>We do not knowingly collect data from minors.</p>
@@ -250,7 +252,7 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           8. External Links and Submissions
           <p>
             Dopin may allow users to include links to external websites or
@@ -266,7 +268,7 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           9. International Data Transfers
           <p>
             Dopin LLC is based in the United States. By using Dopin, you
@@ -279,7 +281,7 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           10. Changes to This Policy
           <p>
             We may update this Privacy Policy periodically. When we make
@@ -296,12 +298,12 @@ function Privacy() {
           </p>
         </section>
 
-        <section className="pt-8">
+        <section className="pt-4">
           11. Contact
-          <p>For questions, concerns, or data requests, please contact:</p>
+          <p className="mb-8">For questions, concerns, or data requests, please contact:</p>
           <address className="not-italic   space-y-1">
             <p>
-              <strong>Dopin LLC</strong>
+              Dopin LLC
             </p>
             <p>San Francisco, California, USA</p>
             <p>

@@ -8,7 +8,7 @@ import DownloadApp from "./DownloadApp";
 
 const menuItems = [
   { label: "Home", href: "/" },
-  { label: "Download", href: "/download" },
+  { label: "Download", href: "#", isExternal: true },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
   { label: "Community Guidelines", href: "/community-guideline" },
@@ -74,6 +74,15 @@ export default function Header() {
           <nav className="hidden md:flex sm:gap-[10px] md:gap-[20px] lg:gap-[30px] 2xl:gap-[48px]">
             {menuItems.map((item) => {
               const isActive = pathname === item.href; // match route
+
+              if (item.isExternal) {
+                return (
+                  <a key={item.href} href={item.href}>
+                    {item.label}
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={item.href}
