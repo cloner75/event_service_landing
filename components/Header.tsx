@@ -23,7 +23,7 @@ export default function Header() {
   const isHome = pathname === "/";
 
   return (
-    <header className="fixed top-0 py-[30px] left-0 w-full bg-white z-50 text-[#131313]">
+    <header className="fixed top-0 z-100000000 py-[30px] left-0 w-full bg-white z-50 text-[#131313]">
       <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between md:justify-center gap-[20px] lg:gap-[60px] 2xl:gap-[80px] h-16">
           <div className="flex items-center gap-3">
