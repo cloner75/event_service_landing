@@ -194,6 +194,7 @@ function Page() {
 
         <section>
           <h2 className="text-xl font-semibold mb-2">15. Contact</h2>
+          <p className="my-4">For legal questions or concerns, contact:</p>
           <address className="not-italic">
             <p>
               <strong>Dopin LLC</strong>

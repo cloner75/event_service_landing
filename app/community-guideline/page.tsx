@@ -1,9 +1,8 @@
 function Page() {
   return (
     <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
-        <h1 className="text-3xl font-bold mb-2">Community Guidelines</h1>
-        Effective Date: November 2025
-
+      <h1 className="text-3xl font-bold mb-2">Community Guidelines</h1>
+      Effective Date: November 2025
       <section className="mb-8">
         <p>
           Welcome to <strong>Dopin</strong> — a place to discover events, share
@@ -17,7 +16,6 @@ function Page() {
           suspension, or permanent deactivation.
         </p>
       </section>
-
       <article className="space-y-8">
         <section>
           1. Be Respectful
@@ -192,16 +190,17 @@ function Page() {
             our website.
           </p>
         </section>
-          <section>
-          12. Contact
-          <p>If you have questions or need to report an issue, contact our support team at:</p>
-          </section>
         <section>
+          12. Contact
+          <p>
+            If you have questions or need to report an issue, contact our
+            support team at:
+          </p>
+        </section>
 
+        <section>
           <address className="not-italic">
-            <p>
-              Dopin LLC
-            </p>
+            <p>Dopin LLC</p>
             <p>San Francisco, California, USA</p>
             <p>
               Email:

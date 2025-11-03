@@ -2,9 +2,7 @@ function Page() {
   return (
     <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
       <h1 className="text-3xl font-bold mb-2">Data Policy</h1>
-      <p className="font-semibold  ">
-        Effective Date: November 2025
-      </p>
+      <p className="font-semibold  ">Effective Date: November 2025</p>
 
       <p>
         This Data Policy explains how Dopin LLC (“Dopin,” “we,” “our,” or “us”)
@@ -76,9 +74,7 @@ function Page() {
         or messages.
       </p>
 
-      <p className="font-semibold  ">
-        4. Data Storage and Retention
-      </p>
+      <p className="font-semibold  ">4. Data Storage and Retention</p>
       <p className="font-medium  ">a. Storage Duration</p>
       <ul className="list-disc pl-6 space-y-1">
         <li>
@@ -178,9 +174,12 @@ function Page() {
 
       <p className="font-semibold  ">10. Contact</p>
       <p>For data-related questions, access requests, or concerns, contact:</p>
+      
+      <section className="space-y-0">
+
+      <p>Dopin LLC</p>
+      <p>San Francisco, California, USA</p>
       <p>
-        Dopin LLC
-        San Francisco, California, USA
         Email:{" "}
         <a
           href="mailto:privacy@dopin.io"
@@ -188,18 +187,19 @@ function Page() {
         >
           privacy@dopin.io
         </a>
-        
-        
-          Website:{" "}
-          <a
-            href="https://www.dopin.io"
-            className="text-blue-600 hover:underline"
-          >
-            www.dopin.io
-          </a>
-        
-        © 2025 Dopin LLC. All rights reserved.
       </p>
+
+      <p>
+        Website:{" "}
+        <a
+          href="https://www.dopin.io"
+          className="text-blue-600 hover:underline"
+        >
+          www.dopin.io
+        </a>
+      </p>
+      <p>© 2025 Dopin LLC. All rights reserved.</p>
+      </section>
     </div>
   );
 }
