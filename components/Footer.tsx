@@ -7,6 +7,8 @@ const menuItems = [
   { label: "About Dopin", href: "/about" },
   { label: "Contact Us", href: "/contact" },
   { label: "Report", href: "/report" },
+  { label: "Data Policy", href: "/data-policy" },
+  { label: "Event Submission Policy", href: "/event-submission-policy" },
 ];
 
 export default function Footer() {
