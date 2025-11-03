@@ -2,7 +2,9 @@ function Page() {
   return (
     <div className="max-w-3xl mx-auto p-6 leading-relaxed space-y-6">
       <h1 className="text-3xl font-bold mb-2">Community Guidelines</h1>
+      <p>
       Effective Date: November 2025
+      </p>
       <section className="mb-8">
         <p>
           Welcome to <strong>Dopin</strong> — a place to discover events, share
