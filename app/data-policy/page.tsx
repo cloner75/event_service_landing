@@ -178,7 +178,9 @@ function Page() {
       <section className="space-y-0">
 
       <p>Dopin LLC</p>
-      <p>San Francisco, California, USA</p>
+      <p>254 Chapman Rd Ste 208</p>
+      <p>Newark, Delaware 19702-5422</p>
+      <p>United States</p>
       <p>
         Email:{" "}
         <a
