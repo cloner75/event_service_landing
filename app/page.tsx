@@ -1,5 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import DownloadApp from "@/components/DownloadApp";
+import { motion } from "framer-motion";
+import PeopleGroup from "@/components/PeopleGroup";
+import HomeImages from "@/components/HomeImages";
+import TypingH5 from "@/components/TypingH5";
 
 const QUOTES = [
   {
@@ -43,27 +49,6 @@ const QUOTES = [
   },
 ];
 
-function PersonImage({
-  imgName,
-  style = "",
-}: {
-  imgName: string;
-  style?: string;
-}) {
-  return (
-    <div
-      className={`absolute w-[57px] h-[57px] rounded-[16px] md:rounded-[30px] md:h-[100px] md:w-[100px] overflow-hidden ${style}`}
-    >
-      <Image
-        src={`/images/people/${imgName}`}
-        alt=""
-        fill
-        className="object-cover"
-      />
-    </div>
-  );
-}
-
 function PersonWithQuote({
   imgName,
   title,
@@ -89,7 +74,9 @@ function PersonWithQuote({
       </div>
       <div className="flex flex-col pl-[10px]">
         <h5 className="text-[24px] font-[700]">{title}</h5>
-        <p className="text-[14px] font-regular max-w-[40%] lg:max-w-[314px]">{quote}</p>
+        <p className="text-[14px] font-regular max-w-[40%] lg:max-w-[314px]">
+          {quote}
+        </p>
       </div>
     </div>
   );
@@ -99,59 +86,71 @@ export default function Home() {
   return (
     <div className="leading-tight">
       <section className="relative">
-        <PersonImage
-          style="absolute top-[-50px] right-[30px] md:right-[-160px] md:top-[760px]"
-          imgName="p_1.jpg"
-        />
-        <PersonImage
-          style="absolute top-[-50px] left-[30px] md:top-[330px] md:left-[-260px]"
-          imgName="p_2.jpg"
-        />
-        <PersonImage
-          style="absolute top-[150px] left-[40px] md:left-[-160px] md:top-[760px]"
-          imgName="p_3.jpg"
-        />
-        <PersonImage
-          style="absolute top-[250px] left-[40px] md:left-[10px] md:top-[430px]"
-          imgName="p_4.jpg"
-        />
-        <PersonImage
-          style="absolute top-[250px] right-[40px] md:right-[20px] md:top-[430px]"
-          imgName="p_5.jpg"
-        />
-        <PersonImage
-          style="absolute top-[150px] right-[10px] md:right-[-80px] md:top-[230px]"
-          imgName="p_6.jpg"
-        />
+        <PeopleGroup />
 
         <div className="flex my-[80px] md:my-[0px] flex-col items-center">
-          <div
-            className={
-              "relative w-[249px] h-[89px] md:w-[724px] md:h-[257px] overflow-hidden"
-            }
+          <motion.div
+            initial={{ scale: 3, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{
+              duration: 0.9,
+              ease: "easeOut",
+            }}
+            className="relative w-[249px] h-[89px] md:w-[724px] md:h-[257px] overflow-hidden"
           >
             <Image
-              src={`/images/Dopin.svg`}
+              src="/images/Dopin.svg"
               alt=""
               fill
               className="object-cover"
             />
-          </div>
-          <h3 className="text-center text-[24px] md:text-[64px] font-[860]">
+          </motion.div>
+          <motion.h3
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.7,
+              ease: "easeOut",
+              bounce: 0.35, // adds a natural drop bounce
+              type: "spring",
+              delay: 1,
+            }}
+            className="text-center text-[24px] md:text-[64px] font-[860]"
+          >
             Dopins are just beginning
-          </h3>
-          <h5 className="text-[14px] md:text-[32px]">
-            Where Every Location Has a Story
-          </h5>
+          </motion.h3>
 
-          <DownloadApp />
+          <motion.h5
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.7,
+              ease: "easeOut",
+              bounce: 0.35, // adds a natural drop bounce
+              type: "spring",
+              delay: 1.7,
+            }}
+            className="text-[14px] md:text-[32px]"
+          >
+            <TypingH5 />
+          </motion.h5>
+
+          <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.7,
+              ease: "easeOut",
+              bounce: 0.35,
+              type: "spring",
+              delay: 2.4, // appears after h5
+            }}
+          >
+            <DownloadApp />
+          </motion.div>
         </div>
 
-        <div className="flex justify-center gap-[59px] items-end">
-          <div className="absolute mb-9 left-[-50px] sm:static w-[120px] h-[258px] rounded-[15px] md:w-[252px] md:h-[546px] md:rounded-[30px] bg-[url('/images/Home_left.png')] bg-cover"></div>
-          <div className="relative shadow-[0px_4px_147.1px_0px_#00000040] w-[186px] h-[402px] rounded-[32px] md:w-[376px] md:h-[814px] md:rounded-[47px] bg-[url('/images/Home_2.png')] bg-cover"></div>
-          <div className="absolute mb-9 right-[-50px] sm:static w-[120px] h-[258px] rounded-[15px] md:w-[252px] md:h-[546px] md:rounded-[30px] bg-[url('/images/Home_right.png')] bg-cover"></div>
-        </div>
+        <HomeImages />
       </section>
 
       <section className="relative">

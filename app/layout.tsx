@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <Header />
         <MainWrapper>
-          <main className="text-[#131313] pt-[130px] px-[8px] md:px-[16px] max-w-[1000px] mx-auto">
+          <main className="text-[#131313] px-[8px] md:px-[16px] max-w-[1000px] mx-auto">
             {children}
           </main>
         </MainWrapper>

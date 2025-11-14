@@ -13,24 +13,24 @@
 }
 
 @font-face {
-  font-family: 'SF Pro';
-  src: url('/fonts/SF-PRO/SF-Pro-Display-Regular.otf') format('opentype');
+  font-family: "SF Pro";
+  src: url("/fonts/SF-PRO/SF-Pro-Display-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro';
-  src: url('/fonts/SF-PRO/SF-Pro-Display-Semibold.otf') format('opentype');
+  font-family: "SF Pro";
+  src: url("/fonts/SF-PRO/SF-Pro-Display-Semibold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro';
-  src: url('/fonts/SF-PRO/SF-Pro-Display-Bold.otf') format('opentype');
+  font-family: "SF Pro";
+  src: url("/fonts/SF-PRO/SF-Pro-Display-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -39,11 +39,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'SF Pro', Arial, Helvetica, sans-serif;
+  font-family: "SF Pro", Arial, Helvetica, sans-serif;
 }
 
-input, textarea {
-  background-color: #F5F5F5;
+input,
+textarea {
+  background-color: #f5f5f5;
   border: none;
 }
 

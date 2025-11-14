@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import DownloadApp from "./DownloadApp";
+import { motion } from "framer-motion";
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -19,11 +20,30 @@ const menuItems = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [showOnScroll, setShowOnScroll] = useState(false);
+
+  useEffect(() => {
+    const handler = () => {
+      if (window.scrollY > 50) {
+        setShowOnScroll(true);
+      } else {
+        setShowOnScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
 
   const isHome = pathname === "/";
 
   return (
-    <header className="fixed top-0 z-100000000 py-[30px] left-0 w-full bg-white z-50 text-[#131313]">
+    <motion.header
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="sticky top-0 z-100000000 py-[30px] left-0 w-full bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_71.43%)] z-50 text-[#131313]"
+    >
       <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between md:justify-center gap-[20px] lg:gap-[60px] 2xl:gap-[80px] h-16">
           <div className="flex items-center gap-3">
@@ -49,24 +69,25 @@ export default function Header() {
             </div>
 
             {/* Logo */}
-            <Link
-              href="/"
-              className={`
-               text-2xl font-bold text-indigo-600`}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={
+                showOnScroll ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }
+              }
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="hidden md:block" // only show on desktop
             >
-              <div
-                className={
-                  "relative w-[83px] h-[29px] md:w-[148px] md:h-[53px] overflow-hidden"
-                }
-              >
-                <Image
-                  src={`/images/Dopin.svg`}
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </Link>
+              <Link href="/">
+                <div className="relative w-[148px] h-[53px] overflow-hidden">
+                  <Image
+                    src="/images/Dopin.svg"
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Desktop Nav */}
@@ -95,7 +116,16 @@ export default function Header() {
           </nav>
 
           <div className={`"flex min-w-[200px]`}>
-            <DownloadApp />
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={
+                showOnScroll ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }
+              }
+              transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+              className="hidden md:flex min-w-[200px]" // only on desktop
+            >
+              <DownloadApp />
+            </motion.div>
           </div>
         </div>
       </div>
@@ -122,6 +152,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 }
