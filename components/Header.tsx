@@ -91,7 +91,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex sm:gap-[10px] md:gap-[20px] lg:gap-[30px] 2xl:gap-[48px]">
+          <nav className="hidden md:flex ml-[6.5rem] sm:gap-[10px] md:gap-[20px] lg:gap-[30px] 2xl:gap-[48px]">
             {menuItems.map((item) => {
               const isActive = pathname === item.href; // match route
 

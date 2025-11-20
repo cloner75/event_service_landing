@@ -1,0 +1,49 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import CardWithPins from "./CardWithPins";
+
+interface CenterImageProps {
+  mode: "video" | "card";
+  videoSrc?: string;
+  className?: string;
+}
+
+export default function CenterImage({ className }: CenterImageProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(ref, { once: false, margin: "-200px 0px" });
+
+  const mode = "image";
+  const videoSrc = "/videos/home_video.mp4";
+
+  // Play/pause video based on in-view
+  if (mode === "video" && videoRef.current) {
+    if (isInView && videoRef.current.paused) {
+      videoRef.current.play().catch(() => {});
+    } else if (!isInView && !videoRef.current.paused) {
+      videoRef.current.pause();
+    }
+  }
+
+  return (
+    <div ref={ref} className={`${className} z-100`}>
+      {mode === "video" ? (
+        <motion.video
+          ref={videoRef}
+          src={videoSrc}
+          loop
+          muted
+          playsInline
+          className="w-[180px] h-[320px] md:w-[360px] md:h-[640px] rounded-[20px] object-cover shadow-lg"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={isInView ? { scale: 1, opacity: 1 } : {}}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        />
+      ) : (
+        <CardWithPins />
+      )}
+    </div>
+  );
+}

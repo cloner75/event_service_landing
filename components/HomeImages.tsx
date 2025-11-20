@@ -1,14 +1,25 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import CardWithPins from "./CardWithPins";
-import SmoothRadius from "./SmoothRadius";
+import CenterImage from "./CenterImage";
+
+const CENTER_IMAGE_MODE = "video"; // 'video' or 'card'
 
 export default function HomeImages() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-600px 0px" });
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-300px 0px" });
+
+  // Play video when in view
+  if (CENTER_IMAGE_MODE === "video" && videoRef.current) {
+    if (isInView && videoRef.current.paused) {
+      videoRef.current.play().catch(() => {});
+    } else if (!isInView && !videoRef.current.paused) {
+      videoRef.current.pause();
+    }
+  }
 
   // Slide-in animations
   const sideVariantsLeft = {
@@ -60,8 +71,8 @@ export default function HomeImages() {
                    bg-[url('/images/Home_left.png')] bg-cover"
       />
 
-      {/* Center Image With Pins */}
-      <CardWithPins />
+      {/* Center: Card or Video */}
+      <CenterImage />
 
       {/* Right Image */}
       <motion.div
