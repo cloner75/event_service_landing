@@ -8,7 +8,7 @@ function MainWrapper({ children }: { children: ReactNode }) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true, // animation runs only the first time
-    margin: "-400px 0px", // start earlier (optional)
+    margin: "-300px 0px",
   });
   const pathname = usePathname();
 
@@ -26,7 +26,7 @@ function MainWrapper({ children }: { children: ReactNode }) {
         }}
         className={`absolute ${
           isHome ? "block" : "hidden"
-        } h-[800px] left-0 top-[700px] w-full bg-[url('/images/sword.svg')] sm:bg-[url('/images/sword_2.svg')] bg-no-repeat bg-center`}
+        } h-[800px] left-0 top-[600px] bg-contain md:top-[700px] w-full bg-[url('/images/sword.svg')] sm:bg-[url('/images/sword_2.svg')] bg-no-repeat md:bg-center`}
       ></motion.div>
 
       {children}

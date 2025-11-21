@@ -4,7 +4,7 @@ import { motion, useInView, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import Image from "next/image";
-import { SLIDE_DURATION, SLICE_IMAGES, IMAGE_WITH_PINS } from "@/configs";
+import { SLIDE_DURATION, IMAGE_WITH_PINS, SLIDE_IMAGES } from "@/configs";
 
 const pinPositions = [
   { top: "8%", left: "-10%" },
@@ -13,17 +13,11 @@ const pinPositions = [
   { top: "10rem", right: "4rem" },
 ];
 
-interface CardWithPinsProps {
-  images?: string[]; // list of image filenames
-  slideInterval?: number; // time in ms per slide
-  pinsOnImage?: string; // which image should show pins
-}
+export default function CardWithPins() {
+  const images = SLIDE_IMAGES;
+  const slideInterval = SLIDE_DURATION;
+  const pinsOnImage = IMAGE_WITH_PINS;
 
-export default function CardWithPins({
-  images = SLICE_IMAGES,
-  slideInterval = SLIDE_DURATION, // 8 seconds
-  pinsOnImage = IMAGE_WITH_PINS,
-}: CardWithPinsProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-300px" });
   // const isInView = false;
@@ -48,7 +42,7 @@ export default function CardWithPins({
   }, [isInView, images.length, slideInterval]);
 
   // Pin component
-  function Pin({ pos, index }) {
+  function Pin({ pos, index }: any) {
     const controls = useAnimation();
 
     useEffect(() => {

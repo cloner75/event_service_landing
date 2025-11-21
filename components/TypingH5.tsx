@@ -9,7 +9,6 @@ export default function TypingH5() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // Wait until drop animation finishes (1.7s delay + 0.7s duration)
     const timeout = setTimeout(() => setShow(true), 2400);
     return () => clearTimeout(timeout);
   }, []);
@@ -29,7 +28,7 @@ export default function TypingH5() {
 
   return (
     <motion.h5
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: 80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{
         duration: 0.7,

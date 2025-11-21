@@ -42,7 +42,7 @@ export default function Header() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="sticky top-0 z-100000000 py-[30px] left-0 w-full bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_71.43%)] z-50 text-[#131313]"
+      className="sticky top-0 z-100000000 py-[30px] left-0 w-full bg-white md:bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_71.43%)] z-50 text-[#131313]"
     >
       <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between md:justify-center gap-[20px] lg:gap-[60px] 2xl:gap-[80px] h-16">
@@ -132,7 +132,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="fixed right-0 bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_13%)] left-0 md:hidden border-t border-gray-200">
           <nav className="flex flex-col space-y-2 px-4 py-3">
             {menuItems.map((item) => {
               const isActive = pathname === item.href;

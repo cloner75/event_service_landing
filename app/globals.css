@@ -14,7 +14,7 @@
 
 @font-face {
   font-family: "SF Pro";
-  src: url("/fonts/SF-PRO/SF-Pro-Display-Regular.otf") format("opentype");
+  src: url("/fonts/SF-PRO/SF-Compact-Rounded-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: "SF Pro";
-  src: url("/fonts/SF-PRO/SF-Pro-Display-Semibold.otf") format("opentype");
+  src: url("/fonts/SF-PRO/SF-Compact-Rounded-Semibold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -30,7 +30,7 @@
 
 @font-face {
   font-family: "SF Pro";
-  src: url("/fonts/SF-PRO/SF-Pro-Display-Bold.otf") format("opentype");
+  src: url("/fonts/SF-PRO/SF-Compact-Rounded-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

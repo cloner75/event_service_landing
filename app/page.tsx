@@ -52,7 +52,7 @@ export default function Home() {
           </motion.h3>
 
           <motion.h5
-            initial={{ y: -80, opacity: 0 }}
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.7,
@@ -67,7 +67,7 @@ export default function Home() {
           </motion.h5>
 
           <motion.div
-            initial={{ y: -80, opacity: 0 }}
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.7,
