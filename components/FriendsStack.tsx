@@ -1,10 +1,15 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import useWindowWidth from "@/hooks/useWindowWidth";
+import { motion, useInView } from "framer-motion";
 
 export default function FriendsStack() {
   const ref = useRef(null);
+  const width = useWindowWidth();
+
+  const xOffset = width > 768 ? 75 : 30;
+  const yOffset = width > 768 ? 20 : 10;
 
   const isInView = useInView(ref, {
     once: true,
@@ -33,8 +38,8 @@ export default function FriendsStack() {
             ? {
                 scale: 1,
                 opacity: 1,
-                x: -120, // slide left like a card fan
-                y: 40, // slight downward push
+                x: -xOffset, // slide left like a card fan
+                y: yOffset, // slight downward push
                 rotate: -7.54, // final tilt
               }
             : {
@@ -68,8 +73,8 @@ export default function FriendsStack() {
             ? {
                 scale: 1,
                 opacity: 1,
-                x: 120, // slide right
-                y: 40,
+                x: xOffset, // slide right
+                y: yOffset,
                 rotate: 3.46, // final tilt
               }
             : {

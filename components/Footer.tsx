@@ -25,7 +25,7 @@ export default function Footer() {
     <footer className="relative text-gray-700 mt-16">
       {/* Background Image */}
       {isHome && (
-        <div className="absolute [clip-path:polygon(0_25%,_100%_0,_100%_100%,_0%_100%)] h-[833px] md:h-[650px] w-full bottom-0 right-0 z-[-2]">
+        <div className="absolute [clip-path:polygon(0_10%,_100%_0,_100%_100%,_0%_100%)] md:[clip-path:polygon(0_25%,_100%_0,_100%_100%,_0%_100%)] h-[900px] md:h-[650px] w-full bottom-0 right-0 z-[-2]">
           <div className="absolute inset-0 bg-[url('/images/friends_2.png')] bg-cover [background-position:center_53%] bg-no-repeat"></div>
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/45"></div>{" "}

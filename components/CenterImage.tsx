@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import CardWithPins from "./CardWithPins";
+import { CARDS_MODE, HOME_VIDEO_PATH } from "@/configs";
 
 interface CenterImageProps {
   mode: "video" | "card";
@@ -15,8 +16,8 @@ export default function CenterImage({ className }: CenterImageProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(ref, { once: false, margin: "-200px 0px" });
 
-  const mode = "image";
-  const videoSrc = "/videos/home_video.mp4";
+  const mode = CARDS_MODE;
+  const videoSrc = HOME_VIDEO_PATH;
 
   // Play/pause video based on in-view
   if (mode === "video" && videoRef.current) {

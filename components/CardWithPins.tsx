@@ -2,12 +2,14 @@
 
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import useWindowWidth from "@/hooks/useWindowWidth";
 import Image from "next/image";
+import { SLIDE_DURATION, SLICE_IMAGES, IMAGE_WITH_PINS } from "@/configs";
 
 const pinPositions = [
-  { top: "3rem", left: "-2rem" },
-  { top: "11rem", left: "-2rem" },
-  { top: "4rem", right: "-2rem" },
+  { top: "8%", left: "-10%" },
+  { top: "20%", left: "-15%" },
+  { top: "10%", right: "-20%" },
   { top: "10rem", right: "4rem" },
 ];
 
@@ -18,13 +20,21 @@ interface CardWithPinsProps {
 }
 
 export default function CardWithPins({
-  images = ["Home_center_1.png", "Home_center_2.jpg", "Home_center_3.jpg"],
-  slideInterval = 8000, // 8 seconds
-  pinsOnImage = "Home_center_1.png",
+  images = SLICE_IMAGES,
+  slideInterval = SLIDE_DURATION, // 8 seconds
+  pinsOnImage = IMAGE_WITH_PINS,
 }: CardWithPinsProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-300px" });
+  // const isInView = false;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const width = useWindowWidth();
+
+  const isSmall = width < 768;
+
+  const renderingPinPositions = isSmall
+    ? pinPositions.slice(0, 3)
+    : pinPositions;
 
   // Slide show effect
   useEffect(() => {
@@ -82,8 +92,12 @@ export default function CardWithPins({
           rotate: [0, -10, 10, -10, 10, 0],
           transition: { duration: 0.6, repeat: 0, ease: "easeInOut" },
         }}
+        whileTap={{
+          rotate: [0, -10, 10, -10, 10, 0],
+          transition: { duration: 0.6, repeat: 0, ease: "easeInOut" },
+        }}
       >
-        <div className="w-[80px] h-[60px] sm:w-[100px] sm:h-[80px] md:w-[120px] md:h-[100px] relative">
+        <div className="w-[80px] h-[60px] sm:w-[100px] sm:h-[80px] md:w-[130px] md:h-[120px] relative">
           <Image
             src="/dopin_item.svg"
             alt="pin"
@@ -98,10 +112,10 @@ export default function CardWithPins({
   return (
     <motion.div
       ref={ref}
-      initial={{ y: 100, opacity: 0 }}
-      animate={isInView ? { y: 0, opacity: 1 } : {}}
+      initial={{ y: 150, opacity: 1, rotate: -10 }}
+      animate={isInView ? { y: 0, opacity: 1, rotate: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative z-10 shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] w-[186px] h-[402px] rounded-[32px] md:w-[376px] md:h-[814px] md:rounded-[47px] overflow-hidden"
+      className="relative z-10 shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] w-[186px] h-[402px] rounded-[32px] md:w-[376px] md:h-[814px] md:rounded-[47px]"
     >
       {/* Image Slides */}
       {images.map((img, idx) => (
@@ -117,7 +131,9 @@ export default function CardWithPins({
 
       {/* Pins only on specific image */}
       {images[currentIndex] === pinsOnImage &&
-        pinPositions.map((pos, idx) => <Pin key={idx} pos={pos} index={idx} />)}
+        renderingPinPositions.map((pos, idx) => (
+          <Pin key={idx} pos={pos} index={idx} />
+        ))}
     </motion.div>
   );
 }

@@ -94,7 +94,7 @@ export default function Home() {
             <PersonQuotes />
           </div>
 
-          <div className="flex md:mt-[180px] flex-col items-center">
+          <div className="flex mt-[700px] md:mt-[180px] flex-col items-center">
             <h2 className="text-center text-[#FFFFFF] max-w-[310px] md:max-w-[790px] text-[64px] font-[860]">
               Your City’s Stories, Your New Friends.
             </h2>
