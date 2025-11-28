@@ -6,6 +6,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import DownloadApp from "./DownloadApp";
 import { motion } from "framer-motion";
+import CopyRight from "./CopyRight";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -21,6 +23,13 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const [showOnScroll, setShowOnScroll] = useState(false);
+  const width = useWindowWidth();
+
+  const isSmallScreen = width < 768;
+
+  const isHome = pathname === "/";
+
+  const mobileMenuBtnIcon = menuOpen ? "cross_icon.svg" : "hamburger.svg";
 
   useEffect(() => {
     const handler = () => {
@@ -35,14 +44,26 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const isHome = pathname === "/";
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden"; // prevent page scroll
+    } else {
+      document.body.style.overflow = ""; // restore scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`sticky top-0 z-100000000 py-[30px] left-0 w-full ${
+      className={`fixed ${
+        menuOpen ? "h-full" : ""
+      } md:h-auto top-0 z-100000000 py-[30px] left-0 w-full ${
         menuOpen
           ? "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_0%)]"
           : "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_71.43%)]"
@@ -57,26 +78,28 @@ export default function Header() {
               className="flex cursor-pointer justify-center items-center justify-center md:hidden w-[48px] h-[48px] shadow-[0px_4px_17.9px_0px_#00000024] rounded-[15px]"
             >
               <button className="flex flex-col items-center justify-between w-6 h-3 focus:outline-none shadow-[0px_4px_17.9px_0px_#00000024]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="12"
-                  viewBox="0 0 18 12"
-                  fill="none"
-                >
-                  <path
-                    d="M1 12C0.71667 12 0.479337 11.904 0.288004 11.712C0.0966702 11.52 0.000670115 11.2827 3.44827e-06 11C-0.000663218 10.7173 0.0953369 10.48 0.288004 10.288C0.48067 10.096 0.718003 10 1 10H17C17.2833 10 17.521 10.096 17.713 10.288C17.905 10.48 18.0007 10.7173 18 11C17.9993 11.2827 17.9033 11.5203 17.712 11.713C17.5207 11.9057 17.2833 12.0013 17 12H1ZM1 7C0.71667 7 0.479337 6.904 0.288004 6.712C0.0966702 6.52 0.000670115 6.28267 3.44827e-06 6C-0.000663218 5.71733 0.0953369 5.48 0.288004 5.288C0.48067 5.096 0.718003 5 1 5H17C17.2833 5 17.521 5.096 17.713 5.288C17.905 5.48 18.0007 5.71733 18 6C17.9993 6.28267 17.9033 6.52033 17.712 6.713C17.5207 6.90567 17.2833 7.00133 17 7H1ZM1 2C0.71667 2 0.479337 1.904 0.288004 1.712C0.0966702 1.52 0.000670115 1.28267 3.44827e-06 1C-0.000663218 0.717333 0.0953369 0.48 0.288004 0.288C0.48067 0.0960001 0.718003 0 1 0H17C17.2833 0 17.521 0.0960001 17.713 0.288C17.905 0.48 18.0007 0.717333 18 1C17.9993 1.28267 17.9033 1.52033 17.712 1.713C17.5207 1.90567 17.2833 2.00133 17 2H1Z"
-                    fill="black"
-                  />
-                </svg>
+                <Image
+                  width={14}
+                  height={14}
+                  alt="hamburger-icon"
+                  src={`/images/icons/${mobileMenuBtnIcon}`}
+                />
               </button>
             </div>
 
             {/* Logo */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={
+                isSmallScreen && menuOpen
+                  ? { opacity: 1, y: -10 }
+                  : { opacity: 0, y: -10 }
+              }
               animate={
-                showOnScroll ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }
+                isSmallScreen && menuOpen
+                  ? { opacity: 1, y: 0 }
+                  : showOnScroll
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: -10 }
               }
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="md:block" // only show on desktop
@@ -121,9 +144,17 @@ export default function Header() {
 
           <div className={`"flex min-w-[200px]`}>
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={
+                isSmallScreen && menuOpen
+                  ? { opacity: 1, y: -10 }
+                  : { opacity: 0, y: -10 }
+              }
               animate={
-                showOnScroll ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }
+                isSmallScreen && menuOpen
+                  ? { opacity: 1, y: 0 }
+                  : showOnScroll
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: -10 }
               }
               transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
               className="md:flex min-w-[200px]" // only on desktop
@@ -136,24 +167,33 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="fixed right-0 bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_13%)] left-0 md:hidden border-t border-gray-200">
+        <div className="flex flex-col justify-between right-0 h-full bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_13%)] left-0 md:hidden">
           <nav className="flex flex-col space-y-2 px-4 py-3">
             {menuItems.map((item) => {
               const isActive = pathname === item.href;
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`transition ${
+                  className={`flex justify-between transition text-[36px] font-[860] ${
                     isActive ? "font-bold text-indigo-600" : ""
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+
+                  <Image
+                    alt=""
+                    width={8}
+                    height={16}
+                    src="/images/icons/chevronRight.svg"
+                  />
                 </Link>
               );
             })}
           </nav>
+          <CopyRight className="m-auto mb-[50px]" />
         </div>
       )}
     </motion.header>

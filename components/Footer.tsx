@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import CopyRight from "./CopyRight";
 
 const menuItems = [
   { label: "Privacy", href: "/features" },
@@ -47,13 +48,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom text */}
-        <div
-          className={`mt-8 text-center text-[10px] md:text-[12px] ${itemsTextColor}`}
-        >
-          &copy; All Right Resaved for{" "}
-          <span className="font-bold">Dopin LLC</span> • Copyright{" "}
-          {new Date().getFullYear()}
-        </div>
+        <CopyRight textColor={itemsTextColor} />
       </div>
     </footer>
   );
