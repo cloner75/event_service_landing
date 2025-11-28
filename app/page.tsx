@@ -15,7 +15,7 @@ import FooterBackground from "@/components/FooterBackground";
 
 export default function Home() {
   return (
-    <div className="leading-tight">
+    <div className="leading-tight home_page">
       <section className="relative">
         <PeopleGroup />
 
