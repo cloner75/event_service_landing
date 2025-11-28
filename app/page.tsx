@@ -22,7 +22,8 @@ export default function Home() {
         <div className="flex my-[80px] md:my-[0px] flex-col items-center">
           <motion.div
             initial={{ scale: 3, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{
               duration: 0.9,
               ease: "easeOut",
@@ -36,15 +37,17 @@ export default function Home() {
               className="object-cover"
             />
           </motion.div>
+
           <motion.h3
             initial={{ y: -80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.7,
               ease: "easeOut",
-              bounce: 0.35, // adds a natural drop bounce
+              bounce: 0.35,
               type: "spring",
-              delay: 1,
+              delay: 0.3,
             }}
             className="text-center text-[24px] md:text-[64px] font-[860]"
           >
@@ -53,13 +56,14 @@ export default function Home() {
 
           <motion.h5
             initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.7,
               ease: "easeOut",
-              bounce: 0.35, // adds a natural drop bounce
+              bounce: 0.35,
               type: "spring",
-              delay: 1.7,
+              delay: 0.7,
             }}
             className="text-[14px] md:text-[32px]"
           >
@@ -68,13 +72,14 @@ export default function Home() {
 
           <motion.div
             initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.7,
               ease: "easeOut",
               bounce: 0.35,
               type: "spring",
-              delay: 2.4, // appears after h5
+              delay: 1.2,
             }}
           >
             <DownloadApp />

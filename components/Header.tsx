@@ -61,7 +61,7 @@ export default function Header() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed ${
+      className={`${isSmallScreen ? "fixed" : "sticky"} ${
         menuOpen ? "h-full" : ""
       } md:h-auto top-0 z-100000000 py-[30px] left-0 w-full ${
         menuOpen
