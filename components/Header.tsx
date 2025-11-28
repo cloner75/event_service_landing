@@ -66,7 +66,7 @@ export default function Header() {
       } md:h-auto top-0 z-100000000 py-[30px] left-0 w-full ${
         menuOpen
           ? "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_0%)]"
-          : "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_71.43%)]"
+          : "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_31.43%)]"
       } md:bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_71.43%)] z-50 text-[#131313]`}
     >
       <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">

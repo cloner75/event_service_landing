@@ -37,7 +37,7 @@ export default function FriendsStack() {
           isInView
             ? {
                 scale: 1,
-                opacity: 1,
+                opacity: 0.5,
                 x: -xOffset, // slide left like a card fan
                 y: yOffset, // slight downward push
                 rotate: -7.54, // final tilt
@@ -72,7 +72,7 @@ export default function FriendsStack() {
           isInView
             ? {
                 scale: 1,
-                opacity: 1,
+                opacity: 0.5,
                 x: xOffset, // slide right
                 y: yOffset,
                 rotate: 3.46, // final tilt
