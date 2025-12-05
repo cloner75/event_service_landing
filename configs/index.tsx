@@ -8,3 +8,5 @@ export const SLIDE_IMAGES =
   process.env.NEXT_PUBLIC_SLIDE_IMAGES?.split(",") || [];
 
 export const IMAGE_WITH_PINS = process.env.NEXT_PUBLIC_IMAGE_WITH_PINS_ON_IT;
+
+export const FOOTER_VIDEO = process.env.NEXT_PUBLIC_FOOTER_VIDEO_NAME;

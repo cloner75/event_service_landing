@@ -63,7 +63,7 @@ export default function Header() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`${isSmallScreen ? "fixed" : "sticky"} ${
         menuOpen ? "h-full" : ""
-      } md:h-auto top-0 z-100000000 py-[30px] left-0 w-full ${
+      } md:h-auto top-0 z-100000000 py-[30px] pt-[10px] md:pt-[30px] left-0 w-full ${
         menuOpen
           ? "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_0%)]"
           : "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_31.43%)]"
@@ -77,14 +77,12 @@ export default function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
               className="flex cursor-pointer justify-center items-center justify-center md:hidden w-[48px] h-[48px] shadow-[0px_4px_17.9px_0px_#00000024] rounded-[15px]"
             >
-              <button className="flex flex-col items-center justify-between w-6 h-3 focus:outline-none shadow-[0px_4px_17.9px_0px_#00000024]">
-                <Image
-                  width={14}
-                  height={14}
-                  alt="hamburger-icon"
-                  src={`/images/icons/${mobileMenuBtnIcon}`}
-                />
-              </button>
+              <Image
+                width={14}
+                height={14}
+                alt="hamburger-icon"
+                src={`/images/icons/${mobileMenuBtnIcon}`}
+              />
             </div>
 
             {/* Logo */}
