@@ -63,12 +63,13 @@ export default function HomeImages() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={sideVariantsRight}
-        whileHover={tiltLeft}
+        whileHover={tiltLeft} // Desktop hover
+        whileTap={tiltLeft} // Mobile tap
         className="absolute bottom-0 left-0 z-0 
-                   shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
-                   w-[120px] h-[258px] rounded-[15px]
-                   md:w-[252px] md:h-[546px] md:rounded-[30px]
-                   bg-[url('/images/Home_left.png')] bg-cover"
+             shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
+             w-[120px] h-[258px] rounded-[15px]
+             md:w-[252px] md:h-[546px] md:rounded-[30px]
+             bg-[url('/images/Home_left.png')] bg-cover"
       />
 
       {/* Center: Card or Video */}
@@ -79,12 +80,13 @@ export default function HomeImages() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={sideVariantsLeft}
-        whileHover={tiltRight}
+        whileHover={tiltRight} // Desktop hover
+        whileTap={tiltRight} // Mobile tap
         className="absolute bottom-0 right-0 z-0
-                   shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
-                   w-[120px] h-[258px] rounded-[15px]
-                   md:w-[252px] md:h-[546px] md:rounded-[30px]
-                   bg-[url('/images/Home_right.png')] bg-cover"
+             shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
+             w-[120px] h-[258px] rounded-[15px]
+             md:w-[252px] md:h-[546px] md:rounded-[30px]
+             bg-[url('/images/Home_right.png')] bg-cover"
       />
     </div>
   );
