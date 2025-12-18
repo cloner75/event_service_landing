@@ -139,7 +139,7 @@ export default async function Event({
       <SquircleShape cornerRadius={60}>
         <div className="bg-white p-5 z-1">
           <div className="flex  mt-2">
-            <div className="flex flex-1 ml-3 items-center h-full">
+            <div className="flex flex-1 flex-nowrap ml-3 items-center h-full">
               <div className="flex-1 ">
                 <div className="text-[24px] font-bold text-[#111] flex items-center">
                   {event.title}
@@ -164,7 +164,7 @@ export default async function Event({
               </div>
             </div>
 
-            <div className="flex-none flex items-center gap-3">
+            <div className="flex-none flex gap-3">
               {event.rsvp && (
                 <Image
                   draggable={false}

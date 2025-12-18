@@ -115,6 +115,7 @@ export default async function Dopin({
   );
   const dopinData: DopinResponse = await data.json();
   const dopin = dopinData.data;
+
   const eventRes = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/event/${dopin.event._id}`,
     {
@@ -125,6 +126,8 @@ export default async function Dopin({
   );
   const eventData: EventResponse = await eventRes.json();
   const event = eventData.data;
+  console.log(dopin);
+  console.log(event);
   return (
     <MotionSection className="relative">
       <SquircleShape
@@ -151,7 +154,7 @@ export default async function Dopin({
       />
       <SquircleShape cornerRadius={60}>
         <div className=" bg-white p-5 z-1 rounded-[60px]">
-          <div className="flex flex-wrap gap-5 ">
+          <div className="flex flex-nowrap gap-5 ">
             <div className="flex-none h-fit ">
               <SquircleShape cornerRadius={40}>
                 <Image
@@ -322,8 +325,8 @@ export default async function Dopin({
               })}
             </div>
           </div>
-          <div className="flex mt-[30px] gap-[20px]">
-            <div className="flex-1">
+          <div className="flex flex-nowrap mt-[30px] gap-[20px]">
+            <div className="w-[60%]">
               <div className="shadow-[0px_4px_18px_rgba(0,0,0,0.15)] rounded-[24px]">
                 <SquircleShape cornerRadius={24}>
                   <div className="px-5 py-1.5 min-h-[81px] bg-white">
@@ -380,35 +383,44 @@ export default async function Dopin({
                           </div>
                         </div>
                       </div>
-                      <div className="flex gap-2.5 items-center mt-[15px]">
+                      <div className="flex gap-2.5 flex-wrap items-center mt-[15px]">
                         <div className="flex-1 rounded-[8px] shadow-[0px_4px_16.1px_rgba(0,0,0,0.1)]">
                           <SquircleShape cornerRadius={8}>
-                            <button className="gap-2.5 bg-white w-full flex items-center h-[36px] justify-center ">
+                            <Link
+                              href={'/'}
+                              className="gap-2.5 bg-white w-full flex items-center h-[36px] justify-center "
+                            >
                               <WwwIcon />
                               <div className="font-semibold text-black text-[12px]">
                                 Website
                               </div>
-                            </button>
+                            </Link>
                           </SquircleShape>
                         </div>
                         <div className="flex-1 rounded-[8px] shadow-[0px_4px_16.1px_rgba(0,0,0,0.1)]">
                           <SquircleShape cornerRadius={8}>
-                            <button className="gap-2.5 flex w-full items-center h-[36px] justify-center">
+                            <Link
+                              href={`tel:${event.location_ref.call}`}
+                              className="gap-2.5 flex w-full items-center h-[36px] justify-center"
+                            >
                               <PhoneIcon />
                               <div className="font-semibold text-black text-[12px]">
                                 Phone
                               </div>
-                            </button>
+                            </Link>
                           </SquircleShape>
                         </div>
                         <div className="flex-1 rounded-[8px] shadow-[0px_4px_16.1px_rgba(0,0,0,0.1)]">
                           <SquircleShape cornerRadius={8}>
-                            <button className="gap-2.5 w-full flex items-center h-[36px] justify-center shadow-[0px_4px_16.1px_rgba(0,0,0,0.1)]">
+                            <Link
+                              href={`https://www.google.com/maps/dir/?api=1&destination=${event.location_ref.location.coordinates[0]},${event.location_ref.location.coordinates[1]}`}
+                              className="gap-2.5 w-full flex items-center h-[36px] justify-center shadow-[0px_4px_16.1px_rgba(0,0,0,0.1)]"
+                            >
                               <Location2LineIcon />
                               <div className="font-semibold text-black text-[12px]">
                                 Direction
                               </div>
-                            </button>
+                            </Link>
                           </SquircleShape>
                         </div>
                       </div>
@@ -418,15 +430,18 @@ export default async function Dopin({
               </div>
             </div>
 
-            <div className="flex-none rounded-[24px] shadow-[0px_4px_16.1px_rgba(0,0,0,0.1)] h-[218px] w-full max-w-[227px] relative overflow-hidden">
-              <SquircleShape cornerRadius={24}>
+            <div className="w-[40%] flex-none rounded-3xl shadow-[0px_4px_16.1px_rgba(0,0,0,0.1)] h-[218px] w-full max-w-[227px] overflow-hidden">
+              <SquircleShape
+                additionalclasses="h-full w-full max-w-[227px]"
+                cornerRadius={24}
+              >
                 <Image
                   draggable={false}
                   src="/images/dopin-map-1.png"
                   alt=""
                   height={218}
                   width={227}
-                  className="object-cover"
+                  className="object-cover w-full h-full"
                 />
               </SquircleShape>
             </div>

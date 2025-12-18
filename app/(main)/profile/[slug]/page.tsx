@@ -118,7 +118,7 @@ export default async function Profile({
     <MotionSection className="relative">
       <SquircleShape topLeftCornerRadius={60} topRightCornerRadius={60}>
         <div className=" bg-white p-5 z-1 overflow-hidden">
-          <div className="flex flex-wrap gap-5">
+          <div className="flex flex-nowrap gap-5">
             <div className="flex-none">
               <SquircleShape cornerRadius={40}>
                 <Image
@@ -187,9 +187,9 @@ export default async function Profile({
             <ModalClickable
               modalName="dopin"
               trigger={
-                <div className="transition hover:shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-[8px] inline-block">
+                <div className="transition hover:shadow-[0px_0px_10px_rgba(0,0,0,0.3)] rounded-[8px] flex-1 w-full max-w-59.5">
                   <SquircleShape cornerRadius={8}>
-                    <button className="transition bg-[linear-gradient(140.98deg,#EC30E4_9.6%,#581DFF_93.68%)] text-[14px] font-semibold w-59.5 h-10.5 text-white flex items-center justify-center">
+                    <button className="transition w-full bg-[linear-gradient(140.98deg,#EC30E4_9.6%,#581DFF_93.68%)] text-[14px] font-semibold  h-10.5 text-white flex items-center justify-center">
                       Friend Request
                     </button>
                   </SquircleShape>
