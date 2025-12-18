@@ -8,13 +8,12 @@ export default function MotionDiv({ children, ...props }: MotionSectionProps) {
   return (
     <motion.div
       initial={{ y: '100%', opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{
         duration: 1.5,
         ease: 'easeOut',
-        bounce: 0.2,
         type: 'spring',
+        bounce: 0.2,
         delay: 0.3,
       }}
       {...props}
