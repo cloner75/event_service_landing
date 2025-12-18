@@ -1,8 +1,10 @@
+import DopinPageVerifyBadge from '@/components/DopinPageVerifyBadge';
 import FormatEventDate from '@/components/FoematEventDate';
 import BuildingFillIcon from '@/components/icons/building-fill';
 import DateSolidIcon from '@/components/icons/date-solid';
 import LocationIcon from '@/components/icons/location';
 import Location2LineIcon from '@/components/icons/location-2-line';
+import MusicIcon from '@/components/icons/music';
 import PhoneIcon from '@/components/icons/phone';
 import PublicIcon from '@/components/icons/public';
 import TimeLineIcon from '@/components/icons/time-line';
@@ -46,7 +48,7 @@ export async function generateMetadata({
     const data: DopinResponse = await res.json();
     const dopin = data.data;
 
-    const title = `Dopin | Dopin`;
+    const title = `${dopin.title} | Dopin`;
     const description = `View ${dopin.name}'s moments and members.`;
 
     const avatarUrl = dopin.owner.avatar
@@ -127,17 +129,9 @@ export default async function Dopin({
   );
   const eventData: EventResponse = await eventRes.json();
   const event = eventData.data;
-  console.log(dopin);
-  console.log(event);
+
   return (
     <MotionSection className="relative">
-      <SquircleShape
-        additionalclasses="absolute pointer-events-none z-3 w-full h-71.75  bottom-0 left-0 "
-        bottomLeftCornerRadius={58}
-        bottomRightCornerRadius={58}
-      >
-        <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0)0%,#FFFFFF_92.28%)] w-full h-71.75"></div>
-      </SquircleShape>
       <ModalClickable
         modalName="main"
         trigger={
@@ -147,61 +141,95 @@ export default async function Dopin({
                 type="button"
                 className="w-[228px] bg-[#581DFF] hover:opacity-95 text-[16px]  text-white font-medium px-8 py-3 transition"
               >
-                Show more
+                join
               </button>
             </SquircleShape>
           </div>
         }
       />
       <SquircleShape cornerRadius={60}>
-        <div className=" bg-white p-5 z-1 rounded-[60px]">
-          <div className="flex flex-nowrap gap-5 ">
-            <div className="flex-none h-fit ">
-              <SquircleShape cornerRadius={40}>
-                <SafeImage
-                  height={136}
-                  width={136}
-                  src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.owner.avatar}?size=medium`}
-                  alt=""
-                  className="w-34 aspect-square object-cover overflow-hidden"
-                />
-              </SquircleShape>
-            </div>
-            <div className="flex-1 ">
-              <div className="flex">
-                <div>
-                  <div className="text-black font-black max-w-[335px] text-[24px] leading-7.25">
-                    {dopin.title}
-                  </div>
-                  <div className="mt-2 text-[#7A7A7A] flex items-center font-normal text-[12px]">
-                    <TimeLineIcon /> &nbsp;{' '}
-                    <FormatEventDate
-                      endedAt={dopin.end_date}
-                      startedAt={dopin.start_date}
-                    />
-                  </div>
-                  <div className="mt-2">
-                    {dopin.is_public && <PublicBadge />}
+        <div className=" bg-white p-5 pb-[50px] z-1 rounded-[60px]">
+          <div className=" shadow-[0px_8px_10.6px_rgba(0,0,0,0.04)] -mx-5 -mt-5 rounded-[70px]">
+            <SquircleShape
+              cornerRadius={60}
+              additionalclasses="flex flex-nowrap gap-3 px-8 pt-8 pb-10"
+            >
+              <div className="flex-1 ">
+                <div className="flex">
+                  <div>
+                    <div className="text-black font-black max-w-[335px] text-[24px] leading-7.25">
+                      {dopin.title}
+                    </div>
+                    <div className="mt-2 text-black flex items-center font-medium text-[12px]">
+                      <TimeLineIcon fill="black" /> &nbsp;
+                      <FormatEventDate
+                        endedAt={dopin.end_date}
+                        startedAt={dopin.start_date}
+                        justHours
+                      />
+                    </div>
+
+                    {dopin.is_public && (
+                      <div className="mt-2">
+                        <PublicBadge />
+                      </div>
+                    )}
+
+                    {dopin.is_concert && (
+                      <div className="mt-1.5">
+                        <ConcertsBadge text={dopin.category.title} />
+                      </div>
+                    )}
+                    <div className="mt-2">
+                      <PublicBadge />
+                    </div>
+                    <div className="mt-1.5">
+                      <ConcertsBadge text={dopin.category.title} />
+                    </div>
+                    <div className="mt-3 flex gap-1.5">
+                      <div className="flex-none">
+                        <SquircleShape cornerRadius={12}>
+                          <SafeImage
+                            src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.owner.avatar}?size=small`}
+                            width={32}
+                            height={32}
+                          />
+                        </SquircleShape>
+                      </div>
+                      <div className="flex-1 ">
+                        <div className="leading-[14px] overflow-hidden flex flex-wrap items-center text-[14px] text-[#581DFF] font-semibold">
+                          <div className="flex-1">{dopin.owner.name}</div>
+                          {dopin.owner.is_verified && <DopinPageVerifyBadge />}
+                        </div>
+                        <div className="text-[12px] text-[#7A7A7A]">
+                          {dopin.owner.bio}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex-none">
-              <ModalClickable modalName="dopin" trigger={<ShareButton />} />
-            </div>
+              <div className="flex-none ">
+                <SquircleShape
+                  additionalclasses="transition rotate-[2.79deg] w-[130px] xs:w-[180px] h-[162px] xs:h-[225px]"
+                  cornerRadius={36}
+                >
+                  <SafeImage
+                    height={225}
+                    width={180}
+                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.owner.avatar}?size=medium`}
+                    alt=""
+                    className="object-cover w-[130px] xs:w-[180px] overflow-hidden"
+                  />
+                </SquircleShape>
+              </div>
+              <div className="flex-none ">
+                <ModalClickable modalName="dopin" trigger={<ShareButton />} />
+              </div>
+            </SquircleShape>
           </div>
-          <div className=" mt-[10px] w-[136px]">
-            <div className=" text-center text-[#7A7A7A] font-normal text-[14px] leading-[17px]">
-              Dopiner:
-            </div>
-            <Link
-              href={`/profile/${dopin.owner._id}`}
-              className="mt-[8px] block text-center text-[#581DFF] font-semibold text-[24px] leading-[24px]"
-            >
-              {dopin.owner.name}
-            </Link>
-          </div>
+
           <div className=" mt-[30px] ">
             <div className=" text-black font-semibold text-[20px] leading-[20px]">
               About Dopin
@@ -210,7 +238,7 @@ export default async function Dopin({
               {dopin.description}
             </div>
           </div>
-          <div className=" mt-[30px] ">
+          <div className=" mt-[20px] ">
             <div className=" text-black font-semibold text-[20px] leading-[20px]">
               {dopin.users.length} Members
             </div>
@@ -223,34 +251,76 @@ export default async function Dopin({
                       modalName="dopin"
                       trigger={
                         <button
-                          style={{ zIndex: 10 - i }}
-                          className="w-[101px] gap-1.5 flex items-center shadow-[0px_4px_17.9px_rgba(0,0,0,0.14)] rounded-full border border-[3px] ml-[-10px] overflow-hidden border-white"
+                          style={{
+                            zIndex: 10 - i,
+                            borderTopLeftRadius: 20,
+                            borderBottomLeftRadius: 20,
+                            borderTopRightRadius: 40,
+                            borderBottomRightRadius: 40,
+                          }}
+                          className="w-[101px] h-[44px] ml-[-10px] gap-1.5 flex items-center shadow-[0px_4px_17.9px_rgba(0,0,0,0.14)]"
                         >
-                          <SafeImage
-                            className=" border border-[3px] border-white rounded-full"
-                            src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
-                            alt=""
-                            width={40}
-                            height={40}
-                          />
+                          <div className="flex-none">
+                            <SquircleShape
+                              cornerRadius={12}
+                              additionalclasses="w-[44px] h-[44px]"
+                            >
+                              <div className="w-full h-full flex justify-center items-center">
+                                <SquircleShape
+                                  cornerRadius={12}
+                                  additionalclasses="w-[39px] h-[39px]"
+                                >
+                                  <SafeImage
+                                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
+                                    alt=""
+                                    width={40}
+                                    height={40}
+                                  />
+                                </SquircleShape>
+                              </div>
+                            </SquircleShape>
+                          </div>
                           <span className="text-[12px] font-bold">See all</span>
                         </button>
                       }
                     />
                   );
                 return (
-                  <div
-                    key={i}
-                    style={{ zIndex: 10 - i }}
-                    className="rounded-full border border-[3px] ml-[-10px] overflow-hidden border-white"
-                  >
-                    <SafeImage
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
-                      alt=""
-                      width={40}
-                      height={40}
-                    />
+                  <div key={i} style={{ zIndex: 10 - i }}>
+                    <SquircleShape
+                      cornerRadius={13}
+                      additionalclasses={`bg-white w-[43px] h-[43px] ${
+                        i != 0 && 'ml-[-10px]'
+                      }`}
+                    >
+                      <div className="w-full h-full flex justify-center items-center">
+                        <SquircleShape
+                          cornerRadius={12}
+                          additionalclasses="w-[39px] h-[39px]"
+                        >
+                          <SafeImage
+                            src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
+                            alt=""
+                            width={39}
+                            height={39}
+                          />
+                        </SquircleShape>
+                      </div>
+                    </SquircleShape>
                   </div>
+
+                  // <div
+                  //   key={i}
+                  //   style={{ zIndex: 10 - i }}
+                  //   className="rounded-full border border-[3px] ml-[-10px] overflow-hidden border-white"
+                  // >
+                  //   <SafeImage
+                  //     src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
+                  //     alt=""
+                  //     width={40}
+                  //     height={40}
+                  //   />
+                  // </div>
                 );
               })}
             </div>
@@ -323,35 +393,33 @@ export default async function Dopin({
             <div className="w-[60%]">
               <div className="shadow-[0px_4px_18px_rgba(0,0,0,0.15)] rounded-[24px]">
                 <SquircleShape cornerRadius={24}>
-                  <div className="px-5 py-1.5 min-h-[81px] bg-white">
-                    <div className="flex flex-nowrap items-center h-full">
-                      <div className="flex-1 ">
-                        <div className="text-[14px] max-w-[200px] font-bold text-[#111] flex items-center">
-                          {event.title}
-                        </div>
-                        <div className="text-[10px] font-normal text-[#7A7A7A] flex items-center gap-2">
-                          <DateSolidIcon />
-                          <FormatEventDate
-                            endedAt={dopin.event.ended_at}
-                            startedAt={dopin.event.started_at}
-                          />
-                        </div>
-                        <div className="text-[12px] font-normal text-[#7A7A7A] flex items-center gap-2">
-                          <LocationIcon />
-                          {dopin.event.address}
-                        </div>
+                  <div className="px-5 py-1.5 min-h-[81px] bg-white flex flex-nowrap items-center h-full">
+                    <div className="flex-1 ">
+                      <div className="text-[14px] max-w-[200px] font-bold text-[#111] flex items-center">
+                        {event.title}
                       </div>
-                      {dopin.event.rsvp != null ? (
-                        <Image
-                          draggable={false}
-                          src={`/images/rsvp.png`}
-                          alt=""
-                          width={92}
-                          height={40}
-                          className="flex-initial"
+                      <div className="text-[10px] font-normal text-[#7A7A7A] flex items-center gap-2">
+                        <DateSolidIcon />
+                        <FormatEventDate
+                          endedAt={dopin.event.ended_at}
+                          startedAt={dopin.event.started_at}
                         />
-                      ) : undefined}
+                      </div>
+                      <div className="text-[12px] font-normal text-[#7A7A7A] flex items-center gap-2">
+                        <LocationIcon />
+                        {dopin.event.address}
+                      </div>
                     </div>
+                    {dopin.event.status == 'active' ? (
+                      <Image
+                        draggable={false}
+                        src={`/images/tickets.png`}
+                        alt=""
+                        width={104}
+                        height={40}
+                        className="flex-none"
+                      />
+                    ) : undefined}
                   </div>
                 </SquircleShape>
               </div>
@@ -451,6 +519,14 @@ function PublicBadge() {
     <span className="px-2 gap-1.5 h-[24px] inline-flex w-auto items-center rounded-[6px] border border-[#E8E8E8]">
       <PublicIcon />
       <span className="text-black text-[12px] font-medium">Public</span>
+    </span>
+  );
+}
+function ConcertsBadge({ text }: { text: string }) {
+  return (
+    <span className="px-2 gap-1.5 h-[24px] inline-flex items-center rounded-[6px] border border-[#E8E8E8]">
+      <MusicIcon />
+      <span className="text-black text-[12px] font-medium">{text}</span>
     </span>
   );
 }

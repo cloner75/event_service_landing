@@ -12,6 +12,7 @@ type SquircleShapeProps = {
   additionalclasses?: string;
   children?: React.ReactNode;
   withMotion?: boolean;
+  style?: any;
 };
 
 export default function SquircleShape({

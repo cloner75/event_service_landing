@@ -44,7 +44,7 @@ export async function generateMetadata({
     const data: EventResponse = await res.json();
     const event = data.data;
 
-    const title = `Event | Dopin`;
+    const title = `${event.name} | Dopin`;
     const description = `View ${event.name}'s dopins and location.`;
 
     const avatarUrl = `/images/Dopin.svg`;

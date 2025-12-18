@@ -2,10 +2,12 @@ export default function FormatEventDate({
   startedAt,
   endedAt,
   timeZone = 'America/Los_Angeles',
+  justHours = false,
 }: {
   startedAt: string;
   endedAt: string;
   timeZone?: string;
+  justHours?: boolean;
 }): string {
   const start = new Date(startedAt);
   const end = new Date(endedAt);
@@ -36,6 +38,6 @@ export default function FormatEventDate({
     })
       .formatToParts(start)
       .find((p) => p.type === 'timeZoneName')?.value ?? '';
-
+  if (justHours) return `${startHour} - ${endHour} ${timeZoneName}`;
   return `${datePart} · ${startHour} - ${endHour} ${timeZoneName}`;
 }

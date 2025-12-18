@@ -42,7 +42,7 @@ export async function generateMetadata({
     const data: ProfileResponse = await res.json();
     const profile = data.data;
 
-    const title = `${profile.name ?? ''} (@${profile.username}) | Dopin`;
+    const title = `${profile.name ?? ''}  | Dopin`;
     const description =
       profile.bio ||
       `View ${profile.name}'s profile on Dopin. ${profile.total_friends} friends and ${profile.total_dopins} dopins.`;
