@@ -1,9 +1,10 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { ModalProvider } from '@/context/ModalContext';
-import GlobalDopinModal from '@/components/GlobalDopinModal';
-import OpenDopinApp from '@/components/OpenDopinApp';
-import './globals.css';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import './../globals.css';
+import MainWrapper from '@/components/MainWrapper';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,16 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
-      >
-        <ModalProvider>
-          <GlobalDopinModal />
+    <>
+      <Header />
+      <MainWrapper>
+        <main className="text-[#131313] px-[8px] md:px-[16px] max-w-[1000px] mx-auto">
           {children}
-          <OpenDopinApp />
-        </ModalProvider>
-      </body>
-    </html>
+        </main>
+      </MainWrapper>
+
+      <Footer />
+    </>
   );
 }

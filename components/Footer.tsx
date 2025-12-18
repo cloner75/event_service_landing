@@ -1,30 +1,34 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import CopyRight from "./CopyRight";
-import { FOOTER_VIDEO } from "@/configs";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import CopyRight from './CopyRight';
+import { FOOTER_VIDEO } from '@/configs';
 
 const menuItems = [
-  { label: "Privacy", href: "/features" },
-  { label: "Terms", href: "/pricing" },
-  { label: "Community Guidelines", href: "/community-guideline" },
-  { label: "About Dopin", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Report", href: "/report" },
-  { label: "Data Policy", href: "/data-policy" },
-  { label: "Event Submission Policy", href: "/event-submission-policy" },
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Community Guidelines', href: '/community-guideline' },
+  { label: 'About Dopin', href: '/about' },
+  { label: 'Contact Us', href: '/contact' },
+  { label: 'Report', href: '/report' },
+  { label: 'Data Policy', href: '/data-policy' },
+  { label: 'Event Submission Policy', href: '/event-submission-policy' },
 ];
 
-export default function Footer() {
+export default function Footer({
+  className = 'mt-16',
+}: {
+  className?: string;
+}) {
   const pathname = usePathname();
 
-  const isHome = pathname === "/";
+  const isHome = pathname === '/';
 
-  const itemsTextColor = isHome ? "text-[#FFFFFF]" : "text-[#7A7A7A]";
+  const itemsTextColor = isHome ? 'text-[#FFFFFF]' : 'text-[#7A7A7A]';
 
   return (
-    <footer className="relative text-gray-700 mt-16">
+    <footer className={`relative text-gray-700 ${className}`}>
       {/* Background Image */}
       {isHome && (
         <div className="absolute [clip-path:polygon(0_10%,_100%_0,_100%_100%,_0%_100%)] md:[clip-path:polygon(0_25%,_100%_0,_100%_100%,_0%_100%)] h-[900px] md:h-[650px] w-full bottom-0 right-0 z-[-2]">
@@ -37,7 +41,7 @@ export default function Footer() {
             playsInline
           />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-black/45"></div>{" "}
+          <div className="absolute inset-0 bg-black/45"></div>{' '}
         </div>
       )}
 
