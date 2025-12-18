@@ -6,12 +6,18 @@ import SquircleShape from '../SquircleShape';
 import Link from 'next/link';
 
 export default function DownloadModal() {
-  const { open, closeModal: handleClose } = useModal();
+  const { open, closeModal } = useModal();
 
   return open ? (
-    <div className="fixed inset-0 z-20 px-3 bg-black/50 backdrop-blur-lg flex items-center justify-center">
+    <div
+      onClick={closeModal}
+      className="fixed inset-0 z-20 px-3 bg-black/50 backdrop-blur-lg flex items-center justify-center"
+    >
       <SquircleShape additionalclasses="" cornerRadius={60}>
-        <div className="bg-[#FFFFFF] px-5 py-5 max-w-[446px] w-full">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="bg-[#FFFFFF] px-5 py-5 max-w-[446px] w-full"
+        >
           <Image
             alt=""
             src="/images/modal-image.png"
@@ -60,10 +66,7 @@ export default function DownloadModal() {
             </Link>
           </div>
           <div className="flex justify-center mt-[25px]">
-            <button
-              onClick={handleClose}
-              className="text-[14px] text-[#7A7A7A]"
-            >
+            <button onClick={closeModal} className="text-[14px] text-[#7A7A7A]">
               Continue on the web
             </button>
           </div>
