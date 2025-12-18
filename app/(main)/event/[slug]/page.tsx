@@ -8,6 +8,7 @@ import TimeLineIcon from '@/components/icons/time-line';
 import UserCheckOutlineIcon from '@/components/icons/user-check-outline';
 import ModalClickable from '@/components/ModalClickable';
 import MotionSection from '@/components/MotionSection';
+import SafeImage from '@/components/SafeImage';
 import ShareButton from '@/components/ShareButton';
 import SquircleShape from '@/components/SquircleShape';
 import { EventResponse } from '@/Dto/event-dto';
@@ -222,14 +223,9 @@ export default async function Event({
                       <div className="flex-1">
                         <div className="flex gap-1.5">
                           <div>
-                            <Image
-                              draggable={false}
+                            <SafeImage
                               className="rounded-full w-[36px] h-[36px]"
-                              src={`${
-                                process.env.NEXT_PUBLIC_BASE_URL
-                              }/v1/public/file/${
-                                dopin.owner._id ?? '------'
-                              }?size=small`}
+                              src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.owner._id}?size=small`}
                               alt=""
                               width={36}
                               height={36}
@@ -268,11 +264,10 @@ export default async function Event({
                         <div className="flex justify-center items-center w-full mt-1">
                           {dopin.users.map((img: string, i: number) => {
                             return (
-                              <Image
-                                draggable={false}
+                              <SafeImage
                                 key={img}
                                 style={{ zIndex: 10 - i }}
-                                className="img-skeleton rounded-full border border-[3px] ml-[-5px] overflow-hidden border-white"
+                                className=" rounded-full border border-[3px] ml-[-5px] overflow-hidden border-white"
                                 src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${img}?size=medium`}
                                 alt=""
                                 width={19}

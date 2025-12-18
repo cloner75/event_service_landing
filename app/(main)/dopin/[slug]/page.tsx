@@ -9,6 +9,7 @@ import TimeLineIcon from '@/components/icons/time-line';
 import WwwIcon from '@/components/icons/www';
 import ModalClickable from '@/components/ModalClickable';
 import MotionSection from '@/components/MotionSection';
+import SafeImage from '@/components/SafeImage';
 import ShareButton from '@/components/ShareButton';
 import SquircleShape from '@/components/SquircleShape';
 import { DopinResponse } from '@/Dto/dopin-dto';
@@ -157,13 +158,12 @@ export default async function Dopin({
           <div className="flex flex-nowrap gap-5 ">
             <div className="flex-none h-fit ">
               <SquircleShape cornerRadius={40}>
-                <Image
-                  draggable={false}
+                <SafeImage
                   height={136}
                   width={136}
-                  src={`https://dopin-backend-qpxxo.ondigitalocean.app/v1/public/file/6928427b82d66cef8c1e5b76?size=medium`}
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.owner.avatar}?size=medium`}
                   alt=""
-                  className="w-34 img-skeleton bg-gray-400 aspect-square object-cover overflow-hidden"
+                  className="w-34 aspect-square object-cover overflow-hidden"
                 />
               </SquircleShape>
             </div>
@@ -226,9 +226,8 @@ export default async function Dopin({
                           style={{ zIndex: 10 - i }}
                           className="w-[101px] gap-1.5 flex items-center shadow-[0px_4px_17.9px_rgba(0,0,0,0.14)] rounded-full border border-[3px] ml-[-10px] overflow-hidden border-white"
                         >
-                          <Image
-                            draggable={false}
-                            className="img-skeleton border border-[3px] border-white rounded-full"
+                          <SafeImage
+                            className=" border border-[3px] border-white rounded-full"
                             src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
                             alt=""
                             width={40}
@@ -245,9 +244,7 @@ export default async function Dopin({
                     style={{ zIndex: 10 - i }}
                     className="rounded-full border border-[3px] ml-[-10px] overflow-hidden border-white"
                   >
-                    <Image
-                      draggable={false}
-                      className="img-skeleton"
+                    <SafeImage
                       src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
                       alt=""
                       width={40}
@@ -275,7 +272,6 @@ export default async function Dopin({
                 <div className="w-full  bg-[#F5F5F5] pb-[30px] select-none">
                   <div className="flex justify-center h-[150px]  overflow-visible">
                     <Image
-                      draggable={false}
                       className="w-[200px] h-[150px] object-cover aspect-auto"
                       src="/images/no-moment.png"
                       alt=""
@@ -297,16 +293,14 @@ export default async function Dopin({
                 return (
                   <div className="flex-1" key={moment.image_id}>
                     <div className="relative">
-                      <Image
-                        draggable={false}
+                      <SafeImage
                         className="w-full h-[180px] object-cover rounded-[21px]"
                         src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${moment.image_id}?size=medium`}
                         alt=""
                         width={143}
                         height={180}
                       />
-                      <Image
-                        draggable={false}
+                      <SafeImage
                         className="absolute left-1/2 object-cover bottom-0 translate-y-1/2 -translate-x-1/2 z-2 w-[36px] h-[36px] rounded-[9px] border border-[2px] border-white"
                         src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${moment.owner.avatar}?size=small`}
                         alt=""

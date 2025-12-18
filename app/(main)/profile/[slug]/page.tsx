@@ -12,6 +12,7 @@ import { ProfileResponse } from '@/Dto/profile-dto';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import MotionSection from '@/components/MotionSection';
+import SafeImage from '@/components/SafeImage';
 
 export async function generateMetadata({
   params,
@@ -47,7 +48,7 @@ export async function generateMetadata({
       `View ${profile.name}'s profile on Dopin. ${profile.total_friends} friends and ${profile.total_dopins} dopins.`;
 
     const avatarUrl = profile.avatar
-      ? `${process.env.NEXT_PUBLIC_BASE_URL}/v1//public/file/${profile.avatar}?size=small`
+      ? `${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${profile.avatar}?size=small`
       : undefined;
 
     return {
@@ -121,27 +122,28 @@ export default async function Profile({
           <div className="flex flex-nowrap gap-5">
             <div className="flex-none">
               <SquircleShape cornerRadius={40}>
-                <Image
-                  draggable={false}
+                <SafeImage
                   height={136}
                   width={136}
-                  src={`https://dopin-backend-qpxxo.ondigitalocean.app/v1/public/file/${profile.avatar}?size=medium`}
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${profile.avatar}?size=medium`}
                   alt=""
-                  className="w-34 img-skeleton aspect-square object-cover overflow-hidden"
+                  className="w-34  aspect-square object-cover overflow-hidden"
                 />
               </SquircleShape>
             </div>
             <div className="flex-1">
               <div className="flex mb-10">
                 <div>
-                  <div className="text-black font-bold text-[24px] leading-7.25">
+                  <div className="text-black font-bold text-[24px] leading-7.25 flex items-center gap-0.25">
                     {profile.name}
+                    <div className="h-7.25">
+                      {profile.is_verified && <VerifyBadge />}
+                    </div>
                   </div>
-                  <div className="text-black font-normal text-[16px]">
+                  <div className="text-black font-normal text-[16px] ">
                     @{profile.username}
                   </div>
                 </div>
-                <div>{profile.is_verified && <VerifyBadge />}</div>
               </div>
               {profile.is_profile_public && (
                 <div className="flex gap-11.25">
@@ -277,13 +279,12 @@ export default async function Profile({
             <div className="grid grid-cols-4 gap-px  bg-white relative min-h-[100px] rounded-b-[60px]">
               {profile.me.map((item) => (
                 <div className="col-span-1" key={item}>
-                  <Image
-                    draggable={false}
+                  <SafeImage
                     height={136}
                     width={136}
-                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1//public/file/${item}?size=medium`}
+                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${item}?size=medium`}
                     alt=""
-                    className="h-56.5 w-full img-skeleton object-cover overflow-hidden"
+                    className="h-56.5 w-full  object-cover overflow-hidden"
                   />
                 </div>
               ))}
