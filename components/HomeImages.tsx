@@ -1,25 +1,25 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import CardWithPins from "./CardWithPins";
 import CenterImage from "./CenterImage";
-
-const CENTER_IMAGE_MODE = "video"; // 'video' or 'card'
 
 export default function HomeImages() {
   const ref = useRef(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-300px 0px" });
 
-  // Play video when in view
-  if (CENTER_IMAGE_MODE === "video" && videoRef.current) {
-    if (isInView && videoRef.current.paused) {
-      videoRef.current.play().catch(() => {});
-    } else if (!isInView && !videoRef.current.paused) {
-      videoRef.current.pause();
-    }
-  }
+  const isInView = useInView(ref, { once: true, margin: "-300px 0px" });
+  const [showSides, setShowSides] = useState(false);
+
+  // Delay mounting side images
+  useEffect(() => {
+    if (!isInView) return;
+
+    const timer = setTimeout(() => {
+      setShowSides(true);
+    }, 1000); // 2 seconds
+
+    return () => clearTimeout(timer);
+  }, [isInView]);
 
   // Slide-in animations
   const sideVariantsLeft = {
@@ -56,38 +56,43 @@ export default function HomeImages() {
   return (
     <div
       ref={ref}
-      className="relative flex justify-center items-end gap-[59px] md:h-[814px]"
+      className="relative flex justify-center items-end gap-[59px]
+                 sm:max-w-[500px] lg:max-w-[100%] mx-auto lg:h-[814px]"
     >
       {/* Left Image */}
-      <motion.div
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={sideVariantsRight}
-        whileHover={tiltLeft} // Desktop hover
-        whileTap={tiltLeft} // Mobile tap
-        className="absolute bottom-0 left-0 z-0 
-             shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
-             w-[120px] h-[258px] rounded-[15px]
-             md:w-[252px] md:h-[546px] md:rounded-[30px]
-             bg-[url('/images/Home_left.png')] bg-cover"
-      />
+      {showSides && (
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={sideVariantsRight}
+          whileHover={tiltLeft}
+          whileTap={tiltLeft}
+          className="absolute bottom-0 left-0 z-0 
+                     shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
+                     w-[120px] h-[258px] rounded-[15px]
+                     lg:w-[252px] lg:h-[546px] lg:rounded-[30px]
+                     bg-[url('/images/Home_left.png')] bg-cover"
+        />
+      )}
 
-      {/* Center: Card or Video */}
+      {/* Center Image / Video */}
       <CenterImage />
 
       {/* Right Image */}
-      <motion.div
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={sideVariantsLeft}
-        whileHover={tiltRight} // Desktop hover
-        whileTap={tiltRight} // Mobile tap
-        className="absolute bottom-0 right-0 z-0
-             shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
-             w-[120px] h-[258px] rounded-[15px]
-             md:w-[252px] md:h-[546px] md:rounded-[30px]
-             bg-[url('/images/Home_right.png')] bg-cover"
-      />
+      {showSides && (
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={sideVariantsLeft}
+          whileHover={tiltRight}
+          whileTap={tiltRight}
+          className="absolute bottom-0 right-0 z-0
+                     shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
+                     w-[120px] h-[258px] rounded-[15px]
+                     lg:w-[252px] lg:h-[546px] lg:rounded-[30px]
+                     bg-[url('/images/Home_right.png')] bg-cover"
+        />
+      )}
     </div>
   );
 }

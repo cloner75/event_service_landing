@@ -161,6 +161,19 @@ function Page() {
               </div>
             </div>
 
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Email Address
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Email"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                {...register("company_name")}
+              />
+            </div>
+
             {/* Company Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">

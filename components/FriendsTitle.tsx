@@ -20,9 +20,10 @@ export default function FriendsTitle() {
         ease: [0.16, 1, 0.3, 1],
         delay: 0.3,
       }}
-      className="text-center max-w-[300px] md:max-w-[900px] mx-auto text-[48px] mt-[160px] md:text-[96px] font-[860]"
+      className="text-center max-w-[300px] lg:max-w-[900px] mx-auto text-[48px] mt-[130px] lg:text-[96px] font-[860]"
     >
-      Connect Beyond <br /> the Moments
+      Connect <br className="lg:hidden" /> Beyond{" "}
+      <br className="hidden lg:block" /> the Moments
     </motion.h2>
   );
 }

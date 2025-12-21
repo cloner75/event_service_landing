@@ -1,13 +1,15 @@
 function Page() {
-    return ( <div>
+  return (
+    <div>
       <main className="max-w-4xl mx-auto px-6 py-16 text-gray-800">
-        <h1 className="text-3xl font-bold">Report a Problem</h1>
+        <h1 className="text-3xl font-bold text-[36px]">Report a Problem</h1>
 
         <div className="my-1 border-gray-200"></div>
 
         <section>
           <p className="text-gray-600 mb-2">
-            Notice something not working right? Let us know what happened so our team can fix it as soon as possible.
+            Notice something not working right? Let us know what happened so our
+            team can fix it as soon as possible.
           </p>
 
           <form className="flex flex-col space-y-6">
@@ -56,17 +58,17 @@ function Page() {
               />
             </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Category (Sign in / Sign up issue)
-                </label>
-                <select className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                  <option>Wrong Information</option>
-                  <option>Account Support</option>
-                  <option>Business Inquiry</option>
-                  <option>Press & Media</option>
-                </select>
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Category (Sign in / Sign up issue)
+              </label>
+              <select className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                <option>Wrong Information</option>
+                <option>Account Support</option>
+                <option>Business Inquiry</option>
+                <option>Press & Media</option>
+              </select>
+            </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -88,7 +90,8 @@ function Page() {
           </form>
         </section>
       </main>
-    </div> );
+    </div>
+  );
 }
 
 export default Page;
