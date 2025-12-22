@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import CenterImage from "./CenterImage";
 
 export default function HomeImages() {
@@ -16,7 +17,7 @@ export default function HomeImages() {
 
     const timer = setTimeout(() => {
       setShowSides(true);
-    }, 1000); // 2 seconds
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [isInView]);
@@ -67,12 +68,19 @@ export default function HomeImages() {
           variants={sideVariantsRight}
           whileHover={tiltLeft}
           whileTap={tiltLeft}
-          className="absolute bottom-0 left-0 z-0 
-                     shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
+          className="absolute bottom-0 left-0 z-0
                      w-[120px] h-[258px] rounded-[15px]
                      lg:w-[252px] lg:h-[546px] lg:rounded-[30px]
-                     bg-[url('/images/Home_left.png')] bg-cover"
-        />
+                     shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] overflow-hidden"
+        >
+          <Image
+            fill
+            priority={true}
+            src="/images/Home_left.png"
+            alt="Left"
+            style={{ objectFit: "cover", objectPosition: "top" }}
+          />
+        </motion.div>
       )}
 
       {/* Center Image / Video */}
@@ -87,11 +95,18 @@ export default function HomeImages() {
           whileHover={tiltRight}
           whileTap={tiltRight}
           className="absolute bottom-0 right-0 z-0
-                     shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)]
                      w-[120px] h-[258px] rounded-[15px]
                      lg:w-[252px] lg:h-[546px] lg:rounded-[30px]
-                     bg-[url('/images/Home_right.png')] bg-cover"
-        />
+                     shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] overflow-hidden"
+        >
+          <Image
+            fill
+            priority={true}
+            src="/images/Home_right.png"
+            alt="Right"
+            style={{ objectFit: "cover" }}
+          />
+        </motion.div>
       )}
     </div>
   );

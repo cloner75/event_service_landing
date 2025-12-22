@@ -93,9 +93,10 @@ export default function CardWithPins() {
       >
         <div className="w-[80px] h-[60px] lg:w-[100px] lg:h-[80px] lg:w-[130px] lg:h-[120px] relative">
           <Image
+            fill
+            priority={true}
             src="/dopin_item.svg"
             alt="pin"
-            fill
             className="object-contain"
           />
         </div>

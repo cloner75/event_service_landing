@@ -56,10 +56,11 @@ function IntroCollection() {
         className="relative w-[265px] h-[89px] lg:w-[760px] lg:h-[257px] overflow-hidden"
       >
         <Image
-          alt="Dopin"
-          src="/images/Dopin.svg"
           fill
           className="object-cover"
+          priority={true}
+          alt="Dopin"
+          src="/images/Dopin.svg"
         />
       </motion.div>
 
