@@ -26,7 +26,7 @@ function MainWrapper({ children }: { children: ReactNode }) {
         }}
         className={`absolute ${
           isHome ? "block" : "hidden"
-        } h-[800px] left-0 top-[600px] bg-contain md:top-[700px] w-full bg-[url('/images/sword.svg')] sm:bg-[url('/images/sword_2.svg')] bg-no-repeat md:bg-center`}
+        } h-[800px] left-0 top-[600px] bg-contain lg:top-[700px] w-full bg-[url('/images/sword.svg')] sm:bg-[url('/images/sword_2.svg')] bg-no-repeat lg:bg-center`}
       ></motion.div>
 
       {children}

@@ -54,7 +54,7 @@ export default function PersonImage({
           delay: appearDelay + delay,
         },
       }}
-      className={`absolute w-[57px] h-[57px] rounded-[16px] md:rounded-[30px] md:h-[100px] md:w-[100px] overflow-hidden ${style}`}
+      className={`absolute w-[57px] h-[57px] rounded-[16px] lg:rounded-[30px] lg:h-[100px] lg:w-[100px] overflow-hidden ${style}`}
     >
       <Image
         src={`/images/people/${imgName}`}
