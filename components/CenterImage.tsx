@@ -37,7 +37,7 @@ export default function CenterImage({ className }: CenterImageProps) {
           loop
           muted
           playsInline
-          className="w-[180px] h-[320px] md:w-[360px] md:h-[640px] rounded-[20px] object-cover shadow-lg"
+          className="w-[180px] h-[320px] lg:w-[360px] lg:h-[640px] rounded-[20px] object-cover shadow-lg"
           initial={{ y: -100, opacity: 1, rotate: -10 }}
           animate={isInView ? { opacity: 1, y: 0, rotate: 0 } : {}}
           transition={{ duration: 0.5, ease: "easeOut" }}

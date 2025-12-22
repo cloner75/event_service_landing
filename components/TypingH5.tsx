@@ -37,7 +37,7 @@ export default function TypingH5() {
         type: "spring",
         delay: 1.7,
       }}
-      className="text-[14px] md:text-[32px]"
+      className="text-[14px] lg:text-[32px]"
     >
       {text}
       <span className="animate-blink">|</span>

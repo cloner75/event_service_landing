@@ -24,7 +24,7 @@ export default function CardWithPins() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const width = useWindowWidth();
 
-  const isSmall = width < 768;
+  const isSmall = width <= 1024;
 
   const renderingPinPositions = isSmall
     ? pinPositions.slice(0, 3)
@@ -91,7 +91,7 @@ export default function CardWithPins() {
           transition: { duration: 0.6, repeat: 0, ease: "easeInOut" },
         }}
       >
-        <div className="w-[80px] h-[60px] sm:w-[100px] sm:h-[80px] md:w-[130px] md:h-[120px] relative">
+        <div className="w-[80px] h-[60px] lg:w-[100px] lg:h-[80px] lg:w-[130px] lg:h-[120px] relative">
           <Image
             src="/dopin_item.svg"
             alt="pin"
@@ -109,7 +109,7 @@ export default function CardWithPins() {
       initial={{ y: 150, opacity: 1, rotate: -10 }}
       animate={isInView ? { y: 0, opacity: 1, rotate: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative z-10 shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] w-[186px] h-[402px] rounded-[32px] md:w-[376px] md:h-[814px] md:rounded-[47px]"
+      className="relative z-10 shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] w-[186px] h-[402px] rounded-[32px] lg:w-[376px] lg:h-[814px] lg:rounded-[47px]"
     >
       {/* Image Slides */}
       {images.map((img, idx) => (
