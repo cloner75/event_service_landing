@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import CameraStarIcon from '@/components/icons/camera-star';
 import EventsIcon from '@/components/icons/events';
 import Image2FillIcon from '@/components/icons/image-2-fill';
@@ -8,9 +7,7 @@ import UserInfoLineIcon from '@/components/icons/user-info-line';
 import ModalClickable from '@/components/ModalClickable';
 import ShareButton from '@/components/ShareButton';
 import SquircleShape from '@/components/SquircleShape';
-import { ProfileResponse } from '@/Dto/profile-dto';
 import { Metadata } from 'next';
-import Image from 'next/image';
 import MotionSection from '@/components/MotionSection';
 import SafeImage from '@/components/SafeImage';
 
@@ -39,7 +36,11 @@ export async function generateMetadata({
       };
     }
 
-    const data: ProfileResponse = await res.json();
+    const data: {
+      success: boolean;
+      message: string;
+      data: any;
+    } = await res.json();
     const profile = data.data;
 
     const title = `${profile.name ?? ''}  | Dopin`;
@@ -112,7 +113,11 @@ export default async function Profile({
       cache: 'no-store',
     }
   );
-  const profileData: ProfileResponse = await data.json();
+  const profileData: {
+    success: boolean;
+    message: string;
+    data: any;
+  } = await data.json();
   const profile = profileData.data;
 
   return (
@@ -277,14 +282,14 @@ export default async function Profile({
         <div>
           {profile.me != null && profile.me.length > 0 ? (
             <div className="grid grid-cols-4 gap-px  bg-white relative min-h-[100px] rounded-b-[60px]">
-              {profile.me.map((item) => (
+              {profile.me.map((item: any) => (
                 <div className="col-span-1" key={item}>
                   <SafeImage
                     height={136}
                     width={136}
                     src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${item}?size=medium`}
                     alt=""
-                    className="h-56.5 w-full  object-cover overflow-hidden"
+                    className="h-56.5 w-full object-cover overflow-hidden"
                   />
                 </div>
               ))}

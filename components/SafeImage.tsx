@@ -33,7 +33,7 @@ export default function SafeImage({
       className={className + ' relative overflow-hidden '}
     >
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-gray-300 rounded-lg" />
+        <div className="absolute inset-0 animate-pulse bg-gray-300" />
       )}
       {!error && (
         <Image
