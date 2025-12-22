@@ -33,7 +33,7 @@ export default function ShareButton() {
   }
 
   return (
-    <div ref={wrapperRef} className="mr-[15px] relative w-10">
+    <div ref={wrapperRef} className="relative w-10">
       {/* Trigger */}
       <button
         onClick={() => setOpen((prev) => !prev)}

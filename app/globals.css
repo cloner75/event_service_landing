@@ -112,6 +112,13 @@ button {
 }
 
 @layer utilities {
+  .location-triangle {
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 21px solid #000;
+  }
   .img-skeleton {
     @apply animate-pulse bg-gray-300;
   }

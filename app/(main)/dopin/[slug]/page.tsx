@@ -1,10 +1,10 @@
+import CategoryBadge from '@/components/CategoryBadge';
 import DopinPageVerifyBadge from '@/components/DopinPageVerifyBadge';
 import FormatEventDate from '@/components/FoematEventDate';
 import BuildingFillIcon from '@/components/icons/building-fill';
 import DateSolidIcon from '@/components/icons/date-solid';
 import LocationIcon from '@/components/icons/location';
 import Location2LineIcon from '@/components/icons/location-2-line';
-import MusicIcon from '@/components/icons/music';
 import PhoneIcon from '@/components/icons/phone';
 import PublicIcon from '@/components/icons/public';
 import TimeLineIcon from '@/components/icons/time-line';
@@ -14,8 +14,6 @@ import MotionSection from '@/components/MotionSection';
 import SafeImage from '@/components/SafeImage';
 import ShareButton from '@/components/ShareButton';
 import SquircleShape from '@/components/SquircleShape';
-import { DopinResponse } from '@/Dto/dopin-dto';
-import { EventResponse } from '@/Dto/event-dto';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -45,7 +43,11 @@ export async function generateMetadata({
       };
     }
 
-    const data: DopinResponse = await res.json();
+    const data: {
+      success: boolean;
+      message: string;
+      data: any;
+    } = await res.json();
     const dopin = data.data;
 
     const title = `${dopin.title} | Dopin`;
@@ -116,7 +118,11 @@ export default async function Dopin({
       cache: 'no-store',
     }
   );
-  const dopinData: DopinResponse = await data.json();
+  const dopinData: {
+    success: boolean;
+    message: string;
+    data: any;
+  } = await data.json();
   const dopin = dopinData.data;
 
   const eventRes = await fetch(
@@ -127,9 +133,12 @@ export default async function Dopin({
       cache: 'no-store',
     }
   );
-  const eventData: EventResponse = await eventRes.json();
+  const eventData: {
+    success: boolean;
+    message: string;
+    data: any;
+  } = await eventRes.json();
   const event = eventData.data;
-
   return (
     <MotionSection className="relative">
       <ModalClickable
@@ -141,7 +150,7 @@ export default async function Dopin({
                 type="button"
                 className="w-[228px] bg-[#581DFF] hover:opacity-95 text-[16px]  text-white font-medium px-8 py-3 transition"
               >
-                join
+                Join
               </button>
             </SquircleShape>
           </div>
@@ -175,16 +184,18 @@ export default async function Dopin({
                       </div>
                     )}
 
-                    {dopin.is_concert && (
-                      <div className="mt-1.5">
-                        <ConcertsBadge text={dopin.category.title} />
-                      </div>
-                    )}
                     <div className="mt-2">
-                      <PublicBadge />
+                      <ModalClickable
+                        modalName="main"
+                        trigger={<PublicBadge />}
+                      />
                     </div>
                     <div className="mt-1.5">
-                      <ConcertsBadge text={dopin.category.title} />
+                      <CategoryBadge
+                        emoji={dopin.emoji}
+                        icon={dopin.icon}
+                        text={dopin.category.title}
+                      />
                     </div>
                     <div className="mt-3 flex gap-1.5">
                       <div className="flex-none">
@@ -308,19 +319,6 @@ export default async function Dopin({
                       </div>
                     </SquircleShape>
                   </div>
-
-                  // <div
-                  //   key={i}
-                  //   style={{ zIndex: 10 - i }}
-                  //   className="rounded-full border border-[3px] ml-[-10px] overflow-hidden border-white"
-                  // >
-                  //   <SafeImage
-                  //     src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=small`}
-                  //     alt=""
-                  //     width={40}
-                  //     height={40}
-                  //   />
-                  // </div>
                 );
               })}
             </div>
@@ -353,7 +351,7 @@ export default async function Dopin({
                     Open 30 min before start time! 🔥
                   </div>
                   <div className="text-black text-[14px] leading-[14px] font-normal text-center mt-2 ">
-                    Get ready — moments unlock soon!{' '}
+                    Get ready — moments unlock soon!
                   </div>
                 </div>
               </SquircleShape>
@@ -365,7 +363,7 @@ export default async function Dopin({
                     <div className="relative">
                       <SafeImage
                         className="w-full h-[180px] object-cover rounded-[21px]"
-                        src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${moment.image_id}?size=medium`}
+                        src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${moment.image_id._id}?size=medium`}
                         alt=""
                         width={143}
                         height={180}
@@ -438,10 +436,7 @@ export default async function Dopin({
                             {event.location_ref.address}
                           </div>
                           <div className="font-semibold text-[#7A7A7A] text-[12px]">
-                            {event.location_ref.country},{' '}
-                            {event.location_ref.state} ,{' '}
-                            {event.location_ref.city},{' '}
-                            {event.location_ref.zipcode}
+                            {event.address}
                           </div>
                         </div>
                       </div>
@@ -519,14 +514,6 @@ function PublicBadge() {
     <span className="px-2 gap-1.5 h-[24px] inline-flex w-auto items-center rounded-[6px] border border-[#E8E8E8]">
       <PublicIcon />
       <span className="text-black text-[12px] font-medium">Public</span>
-    </span>
-  );
-}
-function ConcertsBadge({ text }: { text: string }) {
-  return (
-    <span className="px-2 gap-1.5 h-[24px] inline-flex items-center rounded-[6px] border border-[#E8E8E8]">
-      <MusicIcon />
-      <span className="text-black text-[12px] font-medium">{text}</span>
     </span>
   );
 }

@@ -1,8 +1,9 @@
+import CategoryBadge from '@/components/CategoryBadge';
 import FormatEventDate from '@/components/FoematEventDate';
 import AddIcon from '@/components/icons/add';
+import AddFilledIcon from '@/components/icons/add-filled';
 import DateSolidIcon from '@/components/icons/date-solid';
 import LocationIcon from '@/components/icons/location';
-import MusicIcon from '@/components/icons/music';
 import RightFillIcon from '@/components/icons/right-fill';
 import TimeLineIcon from '@/components/icons/time-line';
 import UserCheckOutlineIcon from '@/components/icons/user-check-outline';
@@ -11,7 +12,6 @@ import MotionSection from '@/components/MotionSection';
 import SafeImage from '@/components/SafeImage';
 import ShareButton from '@/components/ShareButton';
 import SquircleShape from '@/components/SquircleShape';
-import { EventResponse } from '@/Dto/event-dto';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -41,7 +41,11 @@ export async function generateMetadata({
       };
     }
 
-    const data: EventResponse = await res.json();
+    const data: {
+      success: boolean;
+      message: string;
+      data: any;
+    } = await res.json();
     const event = data.data;
 
     const title = `${event.name} | Dopin`;
@@ -110,7 +114,11 @@ export default async function Event({
       cache: 'no-store',
     }
   );
-  const eventData: EventResponse = await data.json();
+  const eventData: {
+    success: boolean;
+    message: string;
+    data: any;
+  } = await data.json();
   const event = eventData.data;
 
   return (
@@ -208,97 +216,113 @@ export default async function Event({
               />
             </div>
           </div>
-          <div className="my-[20px] grid grid-cols-1 gap-2">
+          <div className="my-[30px] grid grid-cols-1 gap-2 ">
             {event.dopins.map((dopin: any) => {
               return (
                 <div
+                  className="rounded-[23px] p-5 min-h-[137px] bg-white shadow-[0px_0px_19.5px_rgba(0,0,0,0.05)]"
                   key={dopin._id}
-                  className="rounded-[16px] shadow-[0px_0px_19.5px_rgba(0,0,0,0.05)]"
                 >
-                  <SquircleShape
-                    cornerRadius={16}
-                    additionalclasses="p-4 min-h-[137px] bg-white"
-                  >
-                    <div className="flex ">
-                      <div className="flex-1">
-                        <div className="flex gap-1.5">
-                          <div>
-                            <SafeImage
-                              className="rounded-full w-[36px] h-[36px]"
-                              src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.owner._id}?size=small`}
-                              alt=""
-                              width={36}
-                              height={36}
+                  <div className="flex ">
+                    <div className="flex-1">
+                      <div className="flex gap-1.5">
+                        <div className="relative h-fit">
+                          <SafeImage
+                            className="rounded-[12px] w-[36px] h-[36px]"
+                            src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.owner.avatar}?size=small`}
+                            alt=""
+                            width={36}
+                            height={36}
+                          />
+                          <div className="absolute left-full top-full translate-x-[-15px] translate-y-[-15px]">
+                            <AddFilledIcon />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 gap-[2px]">
+                          <div className="text-[14px] leading-[14px] font-bold max-w-[175px]">
+                            {dopin.title}
+                          </div>
+                          <div className="text-[12px] text-black gap-1 flex items-center ">
+                            <TimeLineIcon fill="black" />
+                            <FormatEventDate
+                              endedAt={dopin.end_date}
+                              startedAt={dopin.start_date}
+                              justHours={true}
                             />
                           </div>
-                          <div className="grid grid-cols-1 gap-[2px]">
-                            <div className="text-[14px] font-bold max-w-[175px]">
-                              {dopin.title}
-                            </div>
-                            <div className="text-[12px] text-[#7A7A7A] flex items-center ">
-                              <TimeLineIcon />
-                              <FormatEventDate
-                                endedAt={dopin.end_date}
-                                startedAt={dopin.start_date}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mt-2.5 flex text-[#7A7A7A] items-center gap-1 text-[12px] max-w-[175px]">
-                          Started by
-                          <Link
-                            href={`/profile/${dopin.owner._id ?? '------'}`}
-                            className="text-[#581DFF] font-semibold"
-                          >
-                            {dopin.owner.name ?? '------'}
-                          </Link>
-                        </div>
-                        <div className="mt-2">
-                          <ConcertsBadge />
                         </div>
                       </div>
-                      <div className="w-[82px]">
-                        <p className="text-center leading-[10px] text-[10px] font-semibold">
-                          {dopin.users.length} Member
-                        </p>
-                        <div className="flex justify-center items-center w-full mt-1">
-                          {dopin.users.map((img: string, i: number) => {
-                            return (
-                              <SafeImage
-                                key={img}
-                                style={{ zIndex: 10 - i }}
-                                className=" rounded-full border border-[3px] ml-[-5px] overflow-hidden border-white"
-                                src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${img}?size=medium`}
-                                alt=""
-                                width={19}
-                                height={19}
-                              />
-                            );
-                          })}
-                        </div>
-                        <div className="flex justify-center mt-2">
-                          <Link
-                            href={`/dopin/${dopin._id}`}
-                            className="transition hover:shadow-[0px_0px_20px_rgba(0,0,0,0.2)] bg-[linear-gradient(140.98deg,#EC30E4_9.6%,#581DFF_93.68%)] text-[14px] font-semibold rounded-full w-[82px] h-[32px] gap-1.5 text-white flex items-center justify-end pr-2"
-                          >
-                            Join
-                            <RightFillIcon />
-                          </Link>
-                        </div>
+                      <div className="mt-2.5 flex text-[#7A7A7A] items-center gap-1 text-[12px] max-w-[175px]">
+                        Started by
+                        <Link
+                          href={`/profile/${dopin.owner._id}`}
+                          className="text-[#581DFF] font-semibold"
+                        >
+                          {dopin.owner.name}
+                        </Link>
+                      </div>
+                      <div className="mt-2">
+                        <CategoryBadge
+                          emoji={dopin.emoji}
+                          icon={dopin.icon}
+                          text={dopin.category.title}
+                        />
+                      </div>
+                      <div className=" mt-2">
+                        <Link
+                          href={`/dopin`}
+                          className="transition hover:shadow-[0px_0px_20px_rgba(0,0,0,0.2)] bg-[linear-gradient(140.98deg,#EC30E4_9.6%,#581DFF_93.68%)] text-[14px] font-semibold rounded-full w-[82px] h-[32px] gap-1.5 text-white flex items-center justify-end pr-2"
+                        >
+                          Join
+                          <RightFillIcon />
+                        </Link>
                       </div>
                     </div>
-                  </SquircleShape>
+                    <div className="flex-none">
+                      <SquircleShape
+                        additionalclasses="mt-[-35px] transition rotate-[2.79deg] w-[110px] h-[138px]"
+                        cornerRadius={24}
+                      >
+                        <SafeImage
+                          height={138}
+                          width={110}
+                          src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${dopin.cover}?size=medium`}
+                          alt=""
+                          className="object-cover w-[110px] h-[138px] overflow-hidden"
+                        />
+                      </SquircleShape>
+                      <p className="text-center leading-[10px] text-[10px] font-semibold mt-4">
+                        {dopin.users.length} Member
+                      </p>
+                      <div className="flex justify-center items-center w-full mt-1">
+                        {dopin.users.map((user: any, i: number) => {
+                          return (
+                            <SafeImage
+                              key={i}
+                              style={{ zIndex: 10 - (i + 1) }}
+                              className=" rounded-full border border-[3px] ml-[-5px] overflow-hidden border-white"
+                              src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/public/file/${user.avatar}?size=medium`}
+                              alt=""
+                              width={19}
+                              height={19}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               );
             })}
+
             {event.dopins.length == 0 && (
               <div className="h-[200px] flex justify-center items-center">
                 <div>
                   <div className="text-center text-[14px] text-black font-bold">
-                    No Moments
+                    No Dopins
                   </div>
                   <div className="text-[14px] text-[#7A7A7A] max-w-[270px] text-center mx-auto">
-                    This event hasn’t submit any moments yet. Check back soon.
+                    This event hasn’t submit any dopins yet. Check back soon.
                   </div>
                 </div>
               </div>
@@ -307,14 +331,5 @@ export default async function Event({
         </div>
       </SquircleShape>
     </MotionSection>
-  );
-}
-
-function ConcertsBadge() {
-  return (
-    <span className="px-1.25 justify-center gap-1.5 h-[24px] inline-flex min-w-[92px] items-center rounded-full border border-[#E1E1E1]">
-      <MusicIcon />
-      <span className="text-[#7A7A7A] text-[12px] font-semibold">Concerts</span>
-    </span>
   );
 }
