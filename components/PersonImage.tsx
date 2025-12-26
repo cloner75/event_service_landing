@@ -21,7 +21,8 @@ export default function PersonImage({
   appearDelay?: number;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "-20% 0px -20% 0px" }); // triggers earlier
+  // const isInView = useInView(ref, { margin: "-20% 0px -20% 0px" }); // triggers earlier
+  const isInView = true;
 
   const { yOffset, duration, delay } = getRandomFloatParams();
 

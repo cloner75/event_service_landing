@@ -63,7 +63,7 @@ export default function Header() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`${isSmallScreen ? "fixed" : "sticky"} ${
         menuOpen ? "h-full" : ""
-      } lg:h-auto top-0 z-100000000 py-[30px] pt-[10px] lg:pt-[30px] left-0 w-full ${
+      } lg:h-auto top-0 z-100000000 py-[40px] lg:py-[30px] pt-[10px] lg:pt-[30px] left-0 w-full ${
         menuOpen
           ? "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_0%)]"
           : "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_31.43%)]"
@@ -103,7 +103,7 @@ export default function Header() {
               className="lg:block" // only show on desktop
             >
               <Link href="/">
-                <div className="relative w-[162px] h-[53px] overflow-hidden">
+                <div className="relative w-[83px] h-[29px] lg:w-[162px] lg:h-[53px] overflow-hidden">
                   <Image
                     src="/images/Dopin.svg"
                     alt=""

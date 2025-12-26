@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import TypingH5 from "./TypingH5";
 import DownloadApp from "./DownloadApp";
+import PeopleGroup from "./PeopleGroup";
 
 const fadeScale = {
   hidden: { scale: 3, opacity: 0 },
@@ -47,7 +48,7 @@ const slideUp = (delay = 0) => ({
 
 function IntroCollection() {
   return (
-    <div className="flex my-[80px] lg:my-[0px] flex-col items-center">
+    <div className="flex relative max-w-[400px] md:max-w-[450px] m-auto lg:max-w-[100%] mt-[160px] mb-[80px] lg:my-[0px] flex-col items-center">
       <motion.div
         variants={fadeScale}
         initial="hidden"
@@ -93,6 +94,8 @@ function IntroCollection() {
       >
         <DownloadApp />
       </motion.div>
+
+      <PeopleGroup />
     </div>
   );
 }

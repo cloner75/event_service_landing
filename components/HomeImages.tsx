@@ -68,7 +68,7 @@ export default function HomeImages() {
           variants={sideVariantsRight}
           whileHover={tiltLeft}
           whileTap={tiltLeft}
-          className="absolute bottom-0 left-0 z-0
+          className="absolute bottom-0 left-[-60px] md:left-0 z-0
                      w-[120px] h-[258px] rounded-[15px]
                      lg:w-[252px] lg:h-[546px] lg:rounded-[30px]
                      shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] overflow-hidden"
@@ -94,7 +94,7 @@ export default function HomeImages() {
           variants={sideVariantsLeft}
           whileHover={tiltRight}
           whileTap={tiltRight}
-          className="absolute bottom-0 right-0 z-0
+          className="absolute bottom-0 right-[-60px] md:right-0 z-0
                      w-[120px] h-[258px] rounded-[15px]
                      lg:w-[252px] lg:h-[546px] lg:rounded-[30px]
                      shadow-[0px_4px_147.1px_0px_rgba(0,0,0,0.25)] overflow-hidden"

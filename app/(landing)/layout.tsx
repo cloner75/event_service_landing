@@ -30,7 +30,7 @@ export default function RootLayout({
     <>
       <Header />
       <MainWrapper>
-        <main className="text-[#131313] px-[8px] md:px-[16px] md:max-w-[700px]  lg:max-w-[1000px] mx-auto">
+        <main className="text-[#131313] px-[8px] md:px-[16px] md:max-w-[700px] py-[70px] lg:py-0 lg:max-w-[1000px] mx-auto">
           {children}
         </main>
       </MainWrapper>

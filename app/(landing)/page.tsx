@@ -10,10 +10,8 @@ import PersonQuotes from "@/components/PersonQuotes";
 
 export default function Home() {
   return (
-    <div className="leading-tight home_page">
+    <div className="leading-tight home_page overflow-hidden sm:overflow-visible">
       <section className="relative">
-        <PeopleGroup />
-
         <IntroCollection />
 
         <HomeImages />

@@ -7,15 +7,15 @@ export default function PeopleGroup() {
     {
       img: "p_1.jpg",
       style:
-        "absolute top-[-50px] right-[30px] lg:right-[-160px] lg:top-[760px]",
+        "absolute top-[-50px] right-[5px] lg:right-[-160px] lg:top-[760px]",
     },
     {
       img: "p_2.jpg",
-      style: "absolute top-[-50px] left-[30px] lg:top-[330px] lg:left-[-260px]",
+      style: "absolute top-[-50px] left-[5px] lg:top-[330px] lg:left-[-260px]",
     },
     {
       img: "p_3.jpg",
-      style: "absolute top-[150px] left-[40px] lg:left-[-160px] lg:top-[760px]",
+      style: "absolute top-[150px] left-[10px] lg:left-[-160px] lg:top-[760px]",
     },
     {
       img: "p_4.jpg",
@@ -33,13 +33,13 @@ export default function PeopleGroup() {
   ];
 
   return (
-    <div className="relative w-full h-full">
+    <div className="absolute w-full h-full">
       {people.map((p, index) => (
         <PersonImage
           key={p.img}
           imgName={p.img}
           style={p.style}
-          appearDelay={(index + 1) * 1} // staggered delay
+          appearDelay={(index + 1) * 1}
         />
       ))}
     </div>
