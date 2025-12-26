@@ -1,15 +1,50 @@
 import SquircleShape from "./SquircleShape";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
-function DownloadApp({ hideBadgeOnMobile }: { hideBadgeOnMobile?: boolean }) {
+function DownloadApp({
+  hideBadgeOnMobile,
+  isInHeader,
+}: {
+  hideBadgeOnMobile?: boolean;
+}) {
+  const width = useWindowWidth();
+
+  const isLargeScreen = width > 1024;
+
+  const btnStyle = isInHeader
+    ? "lg:w-[193px] lg:h-[60px] lg:gap-[18px]"
+    : "lg:gap-[32px] lg:w-[261px] lg:px-4 lg:h-[75px]";
+
+  const iconStyle = isInHeader
+    ? "lg:w-[35px] lg:h-[30px]"
+    : "lg:w-[43px] lg:h-[43px]";
+
+  const textStyle = isInHeader
+    ? "lg:text-[16px]"
+    : "lg:text-[24px] lg:leading-[24px]";
+
+  const badgeStyle = isInHeader
+    ? "lg:text-[14px] lg:px-[8px]"
+    : "lg:text-[16px] lg:px-[12px]";
+
+  const cornerRadius = isLargeScreen ? 20 : 16;
+
   return (
-    <a target="_blank" href={process.env.NEXT_PUBLIC_APP_DOWNLOAD_LINK}>
+    <a
+      target="_blank"
+      className="z-100 relative"
+      href={process.env.NEXT_PUBLIC_APP_DOWNLOAD_LINK}
+    >
       <div className="transition relative flex justify-center shadow-[0px_4px_62.4px_rgba(0,0,0,0.39)] hover:shadow-[0px_4px_62.4px_rgba(0,0,0,0.69)] rounded-[16px]">
-        <SquircleShape cornerRadius={16}>
-          <button className="flex bg-black px-3 gap-3 w-[162px] h-[48px] items-center">
+        <SquircleShape cornerRadius={cornerRadius}>
+          <button
+            className={`flex bg-black w-[162px] px-3 gap-3 h-[48px] ${btnStyle} items-center`}
+          >
             <div className="flex-none">
               <svg
-                width="32"
-                height="32"
+                className={`w-[32px] h-[32px] ${iconStyle}`}
+                // width="32"
+                // height="32"
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +56,7 @@ function DownloadApp({ hideBadgeOnMobile }: { hideBadgeOnMobile?: boolean }) {
               </svg>
             </div>
             <div className="text-white">
-              <div className="leading-[18px] text-left">
+              <div className={`leading-[18px] text-left ${textStyle}`}>
                 Download on <br />
                 <b>AppStore</b>
               </div>
@@ -31,7 +66,7 @@ function DownloadApp({ hideBadgeOnMobile }: { hideBadgeOnMobile?: boolean }) {
         <div
           className={`absolute ${
             hideBadgeOnMobile ? "hidden lg:block" : ""
-          } margin-auto text-[#FFFFFF] text-[12px] rounded-[45px] px-[8px] py-[2px]  bottom-[-14px] bg-[#EC30E4]`}
+          } margin-auto text-[#FFFFFF] text-[12px] rounded-[45px] px-[8px] py-[2px] py-[2px]  bottom-[-14px] ${badgeStyle} bg-[#EC30E4]`}
         >
           Coming Soon
         </div>

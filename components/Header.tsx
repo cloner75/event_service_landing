@@ -69,8 +69,8 @@ export default function Header() {
           : "bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_31.43%)]"
       } lg:bg-[linear-gradient(360deg,rgba(255,255,255,0)_0%,#ffffff_71.43%)] z-50 text-[#131313]`}
     >
-      <div className="max-w-10xl mx-auto px-4 sm:px-6 xl:px-8">
-        <div className="flex items-center justify-between lg:justify-center gap-[15px] sm:gap-[20px] lg:gap-[60px] 2xl:gap-[80px] h-16">
+      <div className="mx-auto max-w-[1500px] px-4 sm:px-6 xl:px-8">
+        <div className="flex items-center justify-between lg:justify-between w-full h-16">
           <div className="flex items-center gap-3">
             {/* Mobile Menu Button */}
             <div
@@ -157,7 +157,7 @@ export default function Header() {
               transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
               className="lg:flex" // only on desktop
             >
-              <DownloadApp />
+              <DownloadApp isInHeader={true} />
             </motion.div>
           </div>
         </div>
