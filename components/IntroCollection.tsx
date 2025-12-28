@@ -48,7 +48,7 @@ const slideUp = (delay = 0) => ({
 
 function IntroCollection() {
   return (
-    <div className="flex relative max-w-[400px] md:max-w-[450px] m-auto lg:max-w-[100%] mt-[160px] mb-[80px] lg:my-[0px] flex-col items-center">
+    <div className="flex relative max-w-[400px] md:max-w-[450px] m-auto lg:max-w-[100%] mt-[100px] mb-[80px] lg:my-[0px] flex-col items-center">
       <motion.div
         variants={fadeScale}
         initial="hidden"
